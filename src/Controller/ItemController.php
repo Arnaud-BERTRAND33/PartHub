@@ -14,7 +14,7 @@ class ItemController extends AbstractController
         $itemManager = new ItemManager();
         $items = $itemManager->selectAll('title');
 
-        return $this->twig->render('Item/index.html.twig', ['items' => $items]);
+        return $this->twig->render('Budget/index.html.twig', ['items' => $items]);
     }
 
     /**
@@ -25,7 +25,7 @@ class ItemController extends AbstractController
         $itemManager = new ItemManager();
         $item = $itemManager->selectOneById($id);
 
-        return $this->twig->render('Item/show.html.twig', ['item' => $item]);
+        return $this->twig->render('Budget/party.html.twig', ['item' => $item]);
     }
 
     /**
@@ -51,7 +51,7 @@ class ItemController extends AbstractController
             return null;
         }
 
-        return $this->twig->render('Item/edit.html.twig', [
+        return $this->twig->render('Budget/dashboard.html.twig', [
             'item' => $item,
         ]);
     }
@@ -75,7 +75,7 @@ class ItemController extends AbstractController
             return null;
         }
 
-        return $this->twig->render('Item/add.html.twig');
+        return $this->twig->render('Budget/Inscription.html.twig');
     }
 
     /**
