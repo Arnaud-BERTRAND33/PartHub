@@ -2,9 +2,9 @@
 
 namespace App\Controller;
 
-class ListController extends AbstractController
+class ShoppingListController extends AbstractController
 {
-    public function list(): string
+    public function list(int $partyId): string
     {
         return $this->twig->render('List/list.html.twig');
     }

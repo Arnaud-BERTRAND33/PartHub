@@ -4,8 +4,13 @@ namespace App\Controller;
 
 class CommentsController extends AbstractController
 {
-    public function comments(): string
+    public function comments(int $partyId): string
     {
-        return $this->twig->render('Comments/comments.html.twig');
+        // récuparations des commentaires de la party $partyId
+        // $comments = TODO
+
+        return $this->twig->render('Comments/comments.html.twig', [
+            // 'comments' => $comments,
+        ]);
     }
 }
