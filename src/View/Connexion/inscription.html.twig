@@ -1,19 +1,19 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Home</title>
-</head>
-<body>
+{% extends 'publicLayout.html.twig' %}
 
-<h1> s'inscrire </h1>
+{% block title %}Inscription PartHub{% endblock %}
 
-<form action='../Dashboard/dashboard.html.twig'>
-    <button type="submit">Inscription</button>
-</form>
+{% block content %}
+<div class="">
+    <div class="card"><h2>Inscrivez-vous sur PartHub</h2></div>
+    <form action="" method="post">
+        <ul>
+            <li><label for="lastname">Nom: </label><input type="text" name="lastname" id="lastname" > </li>
+            <li><label for="firstname">Prénom: </label><input type="text" name="firstname" id="firstname"> </li>
+            <li><label for="password">Mot de passe: </label><input type="password"name="password" id="password"></li>
+            <li><label for="password2">Mot de passe: </label><input type="password"name="password2" id="password2"> </li>
+            <li><input type="submit" id="send" name="send"value="Enregistré"></li>
+        </ul>
+    </form>
+</div>
 
-</body>
-</html>
+{% endblock %}
