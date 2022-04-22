@@ -6,7 +6,7 @@ use App\Model\UserManager;
 
 class UserController extends AbstractController
 {
-    public function login(): string
+    public function login(): ?string
     {
         $errors = [];
 
@@ -31,7 +31,7 @@ class UserController extends AbstractController
             if (!$errors) {
                 $_SESSION['user_id'] = $user['id'];
                 header('Location: /');
-                exit();
+                return null;
             }
         }
 
@@ -40,18 +40,17 @@ class UserController extends AbstractController
         ]);
     }
 
-    public function logout(): never
+    public function logout(): void
     {
         session_destroy();
         header('Location: /');
-        die;
     }
 
-    public function register(): string
+    public function register(): ?string
     {
         if ($this->user) {
             header('Location: /');
-            die;
+            return null;
         }
 
         $errors = [];
@@ -85,7 +84,6 @@ class UserController extends AbstractController
                 $_SESSION['user_id'] = $userId;
 
                 header('Location: /');
-                die;
             }
         }
 

@@ -12,7 +12,7 @@ class ItemController extends AbstractController
 
         if (!$this->user) {
             header('Location: /login');
-            die;
+            return;
         }
     }
 

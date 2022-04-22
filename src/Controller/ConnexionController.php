@@ -17,16 +17,15 @@ class ConnexionController extends AbstractController
                 header('Location: Dashboard/dashboard.html.twig');
             } else {
                 if (!$user) {
-                    die('PAS USER');
+                    return ('PAS USER');
                 } else {
-                    die('MAUVAIS MDP');
+                    return ('MAUVAIS MDP');
                 }
             }
-
+            return $this->twig->render('Connexion/connexion.html.twig');
         }
-        return $this->twig->render('Connexion/connexion.html.twig');
-
     }
+
 
     public function inscription(): string
     {
