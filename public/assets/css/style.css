@@ -22,12 +22,15 @@ body {
     transform: rotate(360deg)
 }
 
-
 .bg-blue {
     background-color: var(--fithColor);
 }
 
 .nav-pills .nav-link.active {
     background-color: var(--primaryColor);
+}
+
+.bg-yellow{
+    background-color: var(--primaryColor) ;
 }
 
