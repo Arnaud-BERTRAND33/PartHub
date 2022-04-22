@@ -5,20 +5,22 @@
 {% block content %}
 
 <div class="container">
-    <div class="row">
+    <div class="row needs-validation was-validated">
         <div class="col my-3">
             <div class="card">
-                    <div class="card-body">
+                    <div class="card-body bg-orange text-center rounded-top">
                         <h2>Inscrivez-vous sur PartHub</h2>
                     </div>
                 <form action="" method="post">
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item"><label for="lastname">Nom: </label><input type="text" name="lastname" id="lastname" > </li>
-                        <li class="list-group-item"><label for="firstname">Prénom: </label><input type="text" name="firstname" id="firstname"> </li>
-                        <li class="list-group-item"><label for="password">Mot de passe: </label><input type="password"name="password" id="password"></li>
-                        <li class="list-group-item"><label for="password2">Mot de passe: </label><input type="password"name="password2" id="password2"> </li>
-                        <li class="list-group-item"><input type="submit" id="send" name="send"value="Enregistrer"></li>
+                    <div class="form-group my-5">
+                    <ul>
+                        <li class="list-group-item border-0"><label class="mb-1" for="lastname">Nom: </label><input class="form-control" type="text" name="lastname" id="lastname" required > </li>
+                        <li class="list-group-item border-0"><label class="mb-1" for="firstname">Prénom: </label><input class="form-control" type="text" name="firstname" id="firstname" required> </li>
+                        <li class="list-group-item border-0"><label class="mb-1" for="password">Mot de passe: </label><input class="form-control" type="password"name="password" id="password" required></li>
+                        <li class="list-group-item border-0"><label class="mb-1" for="password2">Mot de passe: </label><input class="form-control" type="password"name="password2" id="password2" required> </li>
+                        <li class="list-group-item border-0 text-center"><input class="btn btn-outline-success" type="submit" id="send" name="send"value="Enregistrer"></li>
                     </ul>
+                    </div>
                 </form>
             </div>
         </div>
