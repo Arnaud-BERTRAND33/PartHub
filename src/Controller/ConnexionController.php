@@ -2,11 +2,30 @@
 
 namespace App\Controller;
 
+use App\Model\UserManager;
+
 class ConnexionController extends AbstractController
 {
-    public function login(): string
+    public function login()
     {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $credentials = array_map('trim', $_POST);
+            $connexionManager = new UserManager();
+            $user = $connexionManager->selectOneByEmail($credentials['email']);
+            if ($user && password_verify($credentials['password'], $user['password'])) {
+                $_SESSION['user_id'] = $user['id'];
+                header('Location: Dashboard/dashboard.html.twig');
+            } else {
+                if (!$user) {
+                    die('PAS USER');
+                } else {
+                    die('MAUVAIS MDP');
+                }
+            }
+
+        }
         return $this->twig->render('Connexion/connexion.html.twig');
+
     }
 
     public function inscription(): string
