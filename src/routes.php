@@ -13,6 +13,7 @@ return [
     'contact' => ['HomeController', 'contact',],
     'dashboard' => ['DashboardController', 'dashboard',],
     'party/dashboard' => ['PartyDashboardController', 'dashboard', ['party_id']],
+    'party/add' => ['PartyAddController', 'add'],
     'party/view' => ['PartyViewController', 'view', ['party_id']],
     'party/shopping-list' => ['ShoppingListController', 'list', ['party_id']],
     'party/guests' => ['GuestsController', 'guests', ['party_id']],

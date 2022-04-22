@@ -30,7 +30,6 @@ body {
     background-color: var(--primaryColor);
 }
 
-.bg-yellow{
-    background-color: var(--primaryColor) ;
+.bg-orange{
+    background-color: var(--primaryColor);
 }
-
