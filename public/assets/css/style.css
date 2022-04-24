@@ -29,6 +29,9 @@ body {
 .nav-pills .nav-link.active {
     background-color: var(--primaryColor);
 }
+.bg-orange {
+    background-color: var(--primaryColor);
+}
 
 .bg-orange{
     background-color: var(--primaryColor);
