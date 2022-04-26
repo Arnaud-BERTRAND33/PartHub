@@ -11,6 +11,7 @@ return [
     'login' => ['ConnexionController', 'login',],
     'login/inscription' => ['ConnexionController', 'inscription',],
     'contact' => ['HomeController', 'contact',],
+    'thanks' => ['HomeController', 'thanks',],
     'dashboard' => ['DashboardController', 'dashboard',],
     'party/dashboard' => ['PartyDashboardController', 'dashboard', ['party_id']],
     'party/add' => ['PartyAddController', 'add'],

@@ -1,20 +1,31 @@
 {% extends 'publicLayout.html.twig' %}
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Home</title>
-</head>
-<body>
 
-<h1> s'inscrire </h1>
+{% block title %}Inscription PartHub{% endblock %}
 
-<form action='../Dashboard/dashboard.html.twig'>
-    <button type="submit">Inscription</button>
-</form>
+{% block content %}
 
-</body>
-</html>
+<div class="container d-flex justify-content-center">
+    <div class="row needs-validation was-validated">
+        <div class="col my-3">
+            <div class="card">
+                    <div class="card-body bg-orange text-center rounded-top">
+                        <h2>Inscrivez-vous sur PartHub</h2>
+                    </div>
+                <form action="" method="post">
+                    <div class="form-group my-5">
+                    <ul>
+                        <li class="list-group-item border-0"><label class="mb-1" for="lastname">Nom: </label><input class="form-control" type="text" name="lastname" id="lastname" required > </li>
+                        <li class="list-group-item border-0"><label class="mb-1" for="firstname">Prénom: </label><input class="form-control" type="text" name="firstname" id="firstname" required> </li>
+                        <li class="list-group-item border-0"><label class="mb-1" for="email">Email: </label><input class="form-control" type="text" name="email" id="email" required> </li>
+                        <li class="list-group-item border-0"><label class="mb-1" for="password">Mot de passe: </label><input class="form-control" type="password"name="password" id="password" required></li>
+                        <li class="list-group-item border-0"><label class="mb-1" for="password2">Mot de passe: </label><input class="form-control" type="password"name="password2" id="password2" required> </li>
+                        <li class="list-group-item border-0 text-center"><input class="btn btn-outline-success" type="submit" id="send" name="send"value="Enregistrer"></li>
+                    </ul>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

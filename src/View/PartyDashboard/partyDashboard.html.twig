@@ -1,0 +1,123 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}PartHub{% endblock %}
+
+{% block content %}
+    <div class="p-4 p-md-5 mb-4 text-white rounded bg-dark">
+        <div class="col-md-6 px-0">
+            <h1 class="display-4 fst-italic">Anniversaire JoJo</h1>
+            {#            <p class="lead my-3">Multiple lines of text that form the lede, informing new readers quickly and efficiently about what’s most interesting in this post’s contents.</p>#}
+
+        </div>
+    </div>
+    <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+        <div class="col">
+            <div class="card mb-4 rounded-3 shadow-sm">
+                <div class="card-body">
+                    <p>(Décompte MARA)</p>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card mb-4 rounded-3 shadow-sm">
+                <div class="card-body">
+                    <p>15(VARIABLE TWIG) Participants</p>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card mb-4 rounded-3 shadow-sm">
+                <div class="card-body">
+                    <p>Budget: VARIABLE TWIG</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="card mb-4 rounded-3 shadow-sm">
+                <div class="card-header py-3 text-white bg-yellow">
+                    <h4 class="my-0 fw-normal">Titre soirée (Variable TWIG)</h4>
+                </div>
+                <div class="card-body">
+                    <ul class="list-unstyled mt-3 mb-4">
+                        <li>10 users included</li>
+                        <li>2 GB of storage</li>
+                        <li>Email support</li>
+                        <li>Help center access</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card mb-4 rounded-3 shadow-sm">
+                <div class="card-header py-3 text-white bg-yellow">
+                    <h4 class="my-0 fw-normal">Liste de courses</h4>
+                </div>
+                <div class="card-body">
+                    <ul class="list-unstyled mt-3 mb-4">
+                        <li>20 users included</li>
+                        <li>10 GB of storage</li>
+                        <li>Priority email support</li>
+                        <li>Help center access</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card mb-4 rounded-3 shadow-sm">
+                <div class="card-header py-3 text-white bg-yellow">
+                    <h4 class="my-0 fw-normal">Récap. dépenses</h4>
+                </div>
+                <div class="card-body">
+                    <ul class="list-unstyled mt-3 mb-4">
+                        <li>Alcool: VARIABLE TWIG</li>
+                        <li>Alimentation: VARIABLE TWIG</li>
+                        <li>Location: VARIABLE TWIG</li>
+                        <li>Divers: VARIABLE TWIG</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="my-3 p-3 bg-body rounded shadow-sm">
+        <h6 class="border-bottom pb-2 mb-0">Derniers commentaires</h6>
+        <div class="d-flex text-muted pt-3">
+            <svg class="bd-placeholder-img flex-shrink-0 me-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 32x32" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#007bff"></rect><text x="50%" y="50%" fill="#007bff" dy=".3em">32x32</text></svg>
+
+            <p class="pb-3 mb-0 small lh-sm border-bottom">
+                <strong class="d-block text-gray-dark">@Mercedes</strong>
+                <small class="d-block">Date: 13/04/2022</small>
+                Trop hâte de passer cette soirée en ta compagnie Jonathan.
+            </p>
+        </div>
+        <div class="d-flex text-muted pt-3">
+            <svg class="bd-placeholder-img flex-shrink-0 me-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 32x32" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#e83e8c"></rect><text x="50%" y="50%" fill="#e83e8c" dy=".3em">32x32</text></svg>
+
+            <p class="pb-3 mb-0 small lh-sm border-bottom">
+                <strong class="d-block text-gray-dark">@Jonathan</strong>
+                <small class="d-block">Date: 13/04/2022</small>
+                Je vais te mettre un gros "Die" … ^^
+            </p>
+        </div>
+        <div class="d-flex text-muted pt-3">
+            <svg class="bd-placeholder-img flex-shrink-0 me-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 32x32" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#6f42c1"></rect><text x="50%" y="50%" fill="#6f42c1" dy=".3em">32x32</text></svg>
+
+            <p class="pb-3 mb-0 small lh-sm border-bottom">
+                <strong class="d-block text-gray-dark">@Arnaud</strong>
+                <small class="d-block">Date: 17/04/2022</small>
+                Moi aussi, ça me tarde trop de me faire corriger en place public !! #TeamFouet #TeamVilainGarçon
+            </p>
+        </div>
+        <small class="d-block text-end mt-3">
+            <a href="#">Voir tous les commentaires</a>
+        </small>
+    </div>
+
+{% endblock %}
+
+{% block javascript %}
+
+{# JS CHART.JS   #}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js" integrity="sha512-QSkVNOCYLtj73J4hbmVoOV6KVZuMluZlioC+trLpewV8qMjsWqlIQvkn1KGX2StWvPMdWGBqim1xlC8krl1EKQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+{% endblock %}
