@@ -17,13 +17,13 @@ class ConnexionController extends AbstractController
                 header('Location: Dashboard/dashboard.html.twig');
             } else {
                 if (!$user) {
-                    return ('PAS USER');
+                    return ('ERROR');
                 } else {
-                    return ('MAUVAIS MDP');
+                    return ('False password');
                 }
             }
-            return $this->twig->render('Connexion/connexion.html.twig');
         }
+        return $this->twig->render('Connexion/connexion.html.twig');
     }
 
 

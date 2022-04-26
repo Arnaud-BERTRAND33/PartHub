@@ -22,7 +22,6 @@ body {
     transform: rotate(360deg)
 }
 
-
 .bg-blue {
     background-color: var(--fithColor);
 }
@@ -31,3 +30,6 @@ body {
     background-color: var(--primaryColor);
 }
 
+.bg-orange{
+    background-color: var(--primaryColor);
+}
