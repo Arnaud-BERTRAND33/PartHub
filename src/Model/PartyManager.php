@@ -2,7 +2,7 @@
 
 namespace App\Model;
 
-class PartyAddManager extends AbstractManager
+class PartyManager extends AbstractManager
 {
     public const TABLE = 'event';
 //    public const JOINTURE = 'user_has_event';
@@ -33,6 +33,19 @@ class PartyAddManager extends AbstractManager
 //    public function addUserToParty(int $userId, int $eventId, bool $participate = true)
 //    {
 //    }
+
+
+
+    /**Récupération BDD pour party view*/
+    public function selectOneById(int $id): array|false
+    {
+        $statement = $this->pdo->prepare("SELECT * FROM " . static::TABLE . " WHERE id=:id");
+        $statement->bindValue('id', $id);
+        $statement->execute();
+
+        return $statement->fetch();
+    }
+
 
 //    /**
 //     * Update item in database

@@ -2,10 +2,9 @@
 
 namespace App\Controller;
 
-use _PHPStan_a355aaa14\Nette\Utils\DateTime;
-use App\Model\PartyAddManager;
+use App\Model\PartyManager;
 
-class PartyAddController extends AbstractController
+class PartyController extends AbstractController
 {
     public function add(): string
     {
@@ -48,8 +47,8 @@ class PartyAddController extends AbstractController
                 $event['user_id'] = 2;
                 $event['picture'] = $file;
                 $event['creation_date'] = $dateCreation;
-                $partyaddmanager = new PartyAddManager();
-                $partyaddmanager->insert($event);
+                $partyadd = new PartyManager();
+                $partyadd->insert($event);
 
                 // inscription du user connecté à sa soirée
                 header('Location:/party/dashboard');
@@ -59,4 +58,16 @@ class PartyAddController extends AbstractController
             'errors' => $errors,
             ]);
     }
+
+//    public function selectOneById(): string
+//    {
+//        $partyselect = new PartyManager();
+//        $event['id'] = 2;
+//
+//        $test = $partyselect->selectOneById($event);
+//
+//        var_dump($test);
+//
+//        return $this->twig->render('PartyAdd/partyView.html.twig');
+//    }
 }
