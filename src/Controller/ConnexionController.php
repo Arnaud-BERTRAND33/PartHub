@@ -12,40 +12,24 @@ class ConnexionController extends AbstractController
             $credentials = array_map('trim', $_POST);
             $connexionManager = new UserManager();
             $user = $connexionManager->selectOneByEmail($credentials['email']);
-            if ($user && password_verify($credentials['password'], $user['password'])) {
-                $_SESSION['user_id'] = $user['id'];
-                header('Location: Dashboard/dashboard.html.twig');
+        if ($user && password_verify($credentials['password'], $user['password'])) {
+            $_SESSION['user_id'] = $user['id'];
+            return header('Location:/dashboard');
             } else {
-                if (!$user) {
-                    return ('ERROR');
-                } else {
-                    return ('False password');
+        if (!$user) {
+            return $this->twig->render('Connexion/connexion.html.twig');
+            } else {
+            return $this->twig->render('Connexion/connexion.html.twig');
                 }
             }
         }
-        return $this->twig->render('Connexion/connexion.html.twig');
+            return $this->twig->render('Connexion/connexion.html.twig');
     }
 
 
 
     public function inscription(): string
     {
-//            $firstname = trim($_POST['firstname']);
-//            $lastname = trim($_POST['lastname']);
-//            $email = trim($_POST['email']);
-//            $password = trim($_POST['password']);
-//            $confirmPassword = trim($_POST['confirmPassword']);
-
-//            if ($_POST["password"] === $_POST["confirmPassword"]) {
-//                if ($res) {
-//                    echo "<div class='sucess'>
-//             <h3>Vous êtes inscrit avec succès.</h3>
-//             <p>Cliquez ici pour vous <a href='login.php'>connecter</a></p>
-//           </div>";
-//                }
-//            } else {
-//                echo "Vos mot de passe ne sont pas identiques";
-//            }
 
 
                 $error = array();
@@ -86,14 +70,18 @@ class ConnexionController extends AbstractController
                 $userManager = new userManager();
                 $userManager->insert($userArray);
                 header('Location:/dashboard');
-                die();
+                return '';
             }
-
-
         }
 
             return $this->twig->render('Connexion/inscription.html.twig', [
                 'error' => $error,
             ]);
+    }
+
+             public function logout(): void
+    {
+             session_destroy();
+             header('Location: /');
     }
 }
