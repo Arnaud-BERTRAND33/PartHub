@@ -12,17 +12,14 @@ class ConnexionController extends AbstractController
             $credentials = array_map('trim', $_POST);
             $connexionManager = new UserManager();
             $user = $connexionManager->selectOneByEmail($credentials['email']);
-        if ($user && password_verify($credentials['password'], $user['password'])) {
-            $_SESSION['user_id'] = $user['id'];
-            return header('Location:/dashboard');
+            if ($user && password_verify($credentials['password'], $user['password'])) {
+                $_SESSION['user_id'] = $user['id'];
+                return header('Location:/dashboard');
             } else {
-        if (!$user) {
-            return $this->twig->render('Connexion/connexion.html.twig');
-            } else {
-            return $this->twig->render('Connexion/connexion.html.twig');
-                }
+                    return $this->twig->render('Connexion/connexion.html.twig');
             }
         }
+
             return $this->twig->render('Connexion/connexion.html.twig');
     }
 
@@ -79,9 +76,9 @@ class ConnexionController extends AbstractController
             ]);
     }
 
-             public function logout(): void
+    public function logout(): void
     {
-             session_destroy();
-             header('Location: /');
+        session_destroy();
+        header('Location: /');
     }
 }
