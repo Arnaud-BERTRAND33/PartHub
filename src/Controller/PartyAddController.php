@@ -28,7 +28,6 @@ class PartyAddController extends AbstractController
                 $errors['playlist'] = 'l\'URL n\'est pas valide';
             }
         }
-
         return $this->twig->render('PartyAdd/partyAdd.html.twig');
     }
 }
