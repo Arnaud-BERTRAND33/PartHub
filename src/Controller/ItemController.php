@@ -6,6 +6,16 @@ use App\Model\ItemManager;
 
 class ItemController extends AbstractController
 {
+    public function __construct()
+    {
+        parent::__construct();
+
+        if (!$this->user) {
+            header('Location: /login');
+            return;
+        }
+    }
+
     /**
      * List items
      */
@@ -17,6 +27,7 @@ class ItemController extends AbstractController
         return $this->twig->render('Item/index.html.twig', ['items' => $items]);
     }
 
+
     /**
      * Show informations for a specific item
      */
@@ -25,13 +36,14 @@ class ItemController extends AbstractController
         $itemManager = new ItemManager();
         $item = $itemManager->selectOneById($id);
 
-        return $this->twig->render('Item/party.html.twig', ['item' => $item]);
+        return $this->twig->render('Item/show.html.twig', ['item' => $item]);
     }
+
 
     /**
      * Edit a specific item
      */
-    public function edit(int $id): ?string
+    public function edit(int $id): string
     {
         $itemManager = new ItemManager();
         $item = $itemManager->selectOneById($id);
@@ -44,22 +56,19 @@ class ItemController extends AbstractController
 
             // if validation is ok, update and redirection
             $itemManager->update($item);
-
             header('Location: /items/show?id=' . $id);
-
-            // we are redirecting so we don't want any content rendered
-            return null;
         }
 
-        return $this->twig->render('Item/dashboard.html.twig', [
+        return $this->twig->render('Item/edit.html.twig', [
             'item' => $item,
         ]);
     }
 
+
     /**
      * Add a new item
      */
-    public function add(): ?string
+    public function add(): string
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // clean $_POST data
@@ -70,24 +79,22 @@ class ItemController extends AbstractController
             // if validation is ok, insert and redirection
             $itemManager = new ItemManager();
             $id = $itemManager->insert($item);
-
             header('Location:/items/show?id=' . $id);
-            return null;
         }
 
-        return $this->twig->render('Item/Inscription.html.twig');
+        return $this->twig->render('Item/add.html.twig');
     }
+
 
     /**
      * Delete a specific item
      */
-    public function delete(): void
+    public function delete()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $id = trim($_POST['id']);
             $itemManager = new ItemManager();
             $itemManager->delete((int)$id);
-
             header('Location:/items');
         }
     }
