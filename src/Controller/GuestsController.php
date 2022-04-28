@@ -8,10 +8,4 @@ class GuestsController extends AbstractController
     {
         return $this->twig->render('Guests/guests.html.twig');
     }
-
-
-
-
-
-
 }
