@@ -17,13 +17,22 @@ class UserManager extends AbstractManager
 
     public function insert(array $user): int
     {
-        $statement = $this->pdo->prepare("INSERT INTO " . self::TABLE . " (`email`, password, pseudo)
-         VALUES (:email, :password, :pseudo)");
+
+        $statement = $this->pdo->prepare("INSERT INTO " . self::TABLE . " (firstname, lastname, email, password)
+         VALUES (:firstname, :lastname, :email, :password)");
+
+        $statement->bindValue('firstname', $user ['firstname']);
+        $statement->bindValue('lastname', $user['lastname']);
+        $statement->bindValue('email', $user['email']);
+        $statement->bindValue('password', $user['password']);
+
+
 
         $statement->execute([
+            'firstname' => $user['firstname'],
+            'lastname' => $user['lastname'],
             'email' => $user['email'],
             'password' => $user['password'],
-            'pseudo' => $user['pseudo'],
         ]);
 
         return (int)$this->pdo->lastInsertId();
