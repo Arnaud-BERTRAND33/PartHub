@@ -2,15 +2,30 @@
 
 namespace App\Controller;
 
+use App\Model\CommentsManager;
+
 class CommentsController extends AbstractController
 {
-    public function comments(int $partyId): string
+    public function comments(): string
     {
-        // récuparations des commentaires de la party $partyId
-        // $comments = TODO
+        $CommentManager = new CommentsManager();
+        $comment = $CommentManager->selectAll('date');
 
         return $this->twig->render('Comments/comments.html.twig', [
-            // 'comments' => $comments,
+            'comment' => $comment
         ]);
+    }
+
+    public function add(): void
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $comment = array_map('trim', $_POST);
+
+            $CommentManager = new CommentsManager();
+            $CommentManager->insert($comment);
+
+            header('Location:');
+            die();
+        }
     }
 }
