@@ -20,5 +20,4 @@ return [
     'party/guests' => ['GuestsController', 'guests', ['party_id']],
     'party/budget' => ['BudgetController', 'budget', ['party_id']],
     'party/comments' => ['CommentsController', 'comments', ['party_id']],
-
 ];
