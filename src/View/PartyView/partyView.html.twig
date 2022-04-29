@@ -1,75 +1,7 @@
 {% extends 'layout.html.twig' %}
 
-{% block title %}PartHub - View Party{% endblock %}
+{% block title %}{% endblock %}
 
-{% block content %}
-    <form action="" method="post" enctype="multipart/form-data">
-        <div class="card mt-4 col-lg-12">
-            <h5 class="bg-orange text-center rounded">Informations soirée</h5>
-            <div class="container">
-                <img class="img-thumbnail mx-auto d-block" src="https://images.ctfassets.net/hrltx12pl8hq/7yQR5uJhwEkRfjwMFJ7bUK/dc52a0913e8ff8b5c276177890eb0129/offset_comp_772626-opt.jpg?fit=fill&w=800&h=300" alt="couverture">
-            </div>
-            <div class="card-body">
-                <p class="card-text">
-                <div class="form-group">
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label class="fw-bold" for="title">Titre de la soirée :</label>
-                            <input type="text" class="form-control" id="title" name="title" placeholder="Soirée moustache">
-                            {% if errors.title is defined %}
-                                <p class="text-danger">{{ errors.title }}</p>
-                            {% endif %}
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label class="fw-bold" for="theme">Thème de la soirée :</label>
-                            <input type="texte" class="form-control" id="theme" name="theme" placeholder="Poils et testostérone">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="fw-bold" for="date">Date de la soirée :</label>
-                        <input type="date" class="form-control" id="date" name="date" placeholder="XX/XX/XXXX">
-                        {% if errors.date is defined %}
-                            <p class="text-danger">{{ errors.date }}</p>
-                        {% endif %}
-                    </div>
-
-                            {% if errors.zip is defined %}
-                                <p class="text-danger">{{ errors.zip }}</p>
-                            {% endif %}
-                        </div>
-                    </div>
-                    <div class="form-group">
-                    </div>
-                </div>
-                </p>
-            </div>
-        </div>
-
-        <div class="card mt-4 col-lg-12">
-            <h5 class="bg-orange text-center rounded">Description</h5>
-            <div class="card-body">
-                <label for="description"></label>
-                <textarea class="form-control" id="description" name="description" rows="4" placeholder="Soirée moustache ramenez vos rasoirs !!!"></textarea>
-            </div>
-        </div>
-
-        <div class="card mt-4 col-lg-12">
-            <h5 class="bg-orange text-center rounded">Playlist</h5>
-            <div class="card-body">
-                <p class="card-text">
-
-                <div class="form-group">
-                    <label for="playlist"></label>
-                    <img src="/assets/images/spotify.png" class="img-fluid text-center" alt="Responsive image" width="10%"> <textarea class="form-control" id="playlist_url" name="playlist_url" rows="1" placeholder="url : spotify"></textarea>
-                    {% if errors.playlist_url is defined %}
-                        <p class="text-danger">{{ errors.playlist_url }}</p>
-                    {% endif %}
-                </div>
-                </p>
-                </div>
-            </div>
-        </div>
-    </form>
-{% endblock %}
+{% block content %}{% endblock %}
 
 
