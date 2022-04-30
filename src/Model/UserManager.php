@@ -25,9 +25,6 @@ class UserManager extends AbstractManager
         $statement->bindValue('lastname', $user['lastname']);
         $statement->bindValue('email', $user['email']);
         $statement->bindValue('password', $user['password']);
-
-
-
         $statement->execute([
             'firstname' => $user['firstname'],
             'lastname' => $user['lastname'],

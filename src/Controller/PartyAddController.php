@@ -2,10 +2,19 @@
 
 namespace App\Controller;
 
+use App\Error\LoginRequiredException;
 use App\Model\PartyAddManager;
 
 class PartyAddController extends AbstractController
 {
+    public function __construct()
+    {
+        parent::__construct();
+
+        if (!$this->user) {
+            throw new LoginRequiredException();
+        }
+    }
     public function add(): string
     {
         /** Sécurisation formulaire partyadd */

@@ -2,8 +2,18 @@
 
 namespace App\Controller;
 
+use App\Error\LoginRequiredException;
+
 class PartyViewController extends AbstractController
 {
+    public function __construct()
+    {
+        parent::__construct();
+
+        if (!$this->user) {
+            throw new LoginRequiredException();
+        }
+    }
     /** Remettre (int $partyId) après avoir réalisé requête */
     public function view(): string
     {
