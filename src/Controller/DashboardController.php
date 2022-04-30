@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Error\LoginRequiredException;
+use App\Model\DashboardManager;
 
 class DashboardController extends AbstractController
 {
@@ -17,8 +18,11 @@ class DashboardController extends AbstractController
 
     public function dashboard(): string
     {
+        $selectParty = new DashboardManager();
+        $allParty = $selectParty -> selectAllParty($this->user['id']);
 
-
-        return $this->twig->render('Dashboard/dashboard.html.twig');
+        return $this->twig->render('Dashboard/dashboard.html.twig', [
+            'partys' => $allParty,
+        ]);
     }
 }

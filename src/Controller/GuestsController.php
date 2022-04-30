@@ -14,8 +14,10 @@ class GuestsController extends AbstractController
             throw new LoginRequiredException();
         }
     }
-    public function guests(): string
+    public function guests(int $partyId): string
     {
-        return $this->twig->render('Guests/guests.html.twig');
+        return $this->twig->render('Guests/guests.html.twig', [
+            'party_id' => $partyId,
+        ]);
     }
 }
