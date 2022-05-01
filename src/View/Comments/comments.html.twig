@@ -1,0 +1,66 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}{{ parent () }} - Commentaires{% endblock %}
+
+{% block content %}
+    <h4 class="card-header bg-orange text-center mb-3">Espace commentaires</h4>
+
+    {% set i = 0 %}
+    {% for comment in comments %}
+        {% set i = i + 1 %}
+<ul class = "list-group">
+    {% if i is divisible by(2) %}
+    <li class="list-group-item border-0">
+    <article class = "d-flex bd-highlight justify-content-between align-items-center" style="background-color: white">
+        <header class="card-header d-flex flex-column bd-highlight align-items-center p-3 border-bottom-0 " style="background-color: white">
+                <div class="width-auto">
+                    <img class="rounded-circle p-2 bd-highlight" src="{{ comment.picture }}" width="80" height="80" alt="">
+                </div>
+            <p class="fs-5"><a style="color: darkgrey; text-decoration:none" href="#">{{ comment.firstname }}</a></p>
+        </header>
+        <div class="p-2 w-100 bd-highlight">
+            <p>{{ comment.comment }}</p>
+        </div>
+    </article>
+        <p class="fs-6 fw-light text-end my-0" style="color: darkgrey">{{ comment.date | date }}</p>
+    </li>
+
+        {% else %}
+
+    <li class="list-group-item mt-3 border-0" style="background-color: #eeeeee">
+        <article class = "d-flex bd-highlight flex-row-reverse justify-content-between align-items-center" style="background-color: #eeeeee">
+            <header class="card-header d-flex flex-column bd-highlight align-items-center p-3 border-bottom-0" style="background-color: #eeeeee">
+                <div class="width-auto">
+                    <img class="rounded-circle p-2 bd-highlight" src="{{ comment.picture }}" width="80" height="80" alt="">
+                </div>
+                <p class="fs-5"><a style="color: darkgrey; text-decoration:none" href="#">{{ comment.firstname }}</a></p>
+            </header>
+            <div class="p-2 w-100 bd-highlight">
+                <p> {{ comment.comment }} </p>
+            </div>
+        </article>
+        <p class="fs-6 fw-light text-start my-0" style="color: darkgrey">{{ comment.date | date }}</p>
+    </li>
+</ul>
+            {% endif %}
+    {% endfor %}
+
+    <div class="card-footer py-3 border-0 my-5" style="background-color: white">
+        <div class="d-flex flex-start w-100">
+            <img class="rounded-circle shadow-1-strong me-3"
+                 src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(19).webp" alt="avatar" width="40"
+                 height="40" />
+            <form method="post" action="" class="form-outline w-100">
+                <label for="textAreaExample"></label>
+                <textarea class="form-control" id="textAreaExample" name="comment" rows="4" style="background: #fff;" placeholder="Votre message..."></textarea>
+                <label for="textAreaExample"></label>
+                <div class="float-end mt-4 pt-1">
+                    <input class="btn btn-primary" type="submit" id="send" name="send" value="Poster">
+                </div>
+            </form>
+        </div>
+
+    </div>
+
+
+{% endblock %}

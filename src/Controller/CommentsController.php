@@ -2,25 +2,31 @@
 
 namespace App\Controller;
 
-use App\Error\LoginRequiredException;
+
+use App\Model\CommentsManager;
 
 class CommentsController extends AbstractController
 {
-    public function __construct()
+    public function comments(int $eventId): string
     {
-        parent::__construct();
+        $commentManager = new CommentsManager();
 
-        if (!$this->user) {
-            throw new LoginRequiredException();
+        $comments = $commentManager->selectByPartyId($eventId);
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $comment = array_map('trim', $_POST);
+
+            $comment['event_id'] = '1';
+            $comment['user_id'] = '2';
+
+            $commentsManager = new CommentsManager();
+            $commentsManager->insert($comment);
+            header('Location: /party/comments?party_id=' . $eventId);
+            return '';
         }
-    }
-    public function comments(): string
-    {
-        // récuparations des commentaires de la party $partyId
-        // $comments = TODO
 
         return $this->twig->render('Comments/comments.html.twig', [
-            // 'comments' => $comments,
+            'comments' => $comments,
         ]);
     }
+
 }
