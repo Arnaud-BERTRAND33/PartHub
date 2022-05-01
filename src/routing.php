@@ -1,6 +1,8 @@
 <?php
 
 // Get the required route (without query string) and remove trailing slashes
+use App\Error\LoginRequiredException;
+
 $route = trim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH) ?? '', '/');
 
 // $routes comes from 'routes.php' required here
@@ -35,6 +37,8 @@ foreach ($matchingRoute[2] ?? [] as $parameter) {
 try {
     // execute the controller
     echo (new $controller())->$method(...$parameters);
+} catch (LoginRequiredException $e) {
+    header('Location: /login');
 } catch (Exception $e) {
     // if an exception is thrown during controller execution
     // and if mode 'dev' is activated, error is displayed using *Whoops*
@@ -44,6 +48,5 @@ try {
     } else {
         header("HTTP/1.0 500 Internal Server Error");
         echo '500 - Internal Server Error';
-        exit();
     }
 }
