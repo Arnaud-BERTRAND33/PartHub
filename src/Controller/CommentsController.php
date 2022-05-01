@@ -12,9 +12,6 @@ class CommentsController extends AbstractController
         $commentManager = new CommentsManager();
 
         $comments = $commentManager->selectByPartyId($eventId);
-
-
-
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $comment = array_map('trim', $_POST);
 
