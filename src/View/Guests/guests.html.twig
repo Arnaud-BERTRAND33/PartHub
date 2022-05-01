@@ -1,18 +1,20 @@
 {% extends 'layout.html.twig' %}
 
-{% block content %}
-    {{ $guests}}
+{% block title %}PartHub{% endblock %}
 
-<div class="card my-3">
-    <h4 class="card-header bg-orange text-center">Liste des invités</h4>
+{% block content %}
+
+    <div class="card my-3">
+    <h5 class="card-header bg-orange text-center">Liste des invités</h5>
     <div class="card-body">
         <div class="bg-light border rounded-3">
             <div class="col-md-12">
                 <div class="content-panel">
+
                     <table class="table table-striped table-advance table-hover">
                         <thead>
                         <tr>
-                            <th><i class="fa fa-bullhorn"></i> </th>
+                            <th><i class="fa fa-bullhorn"></i>Avatar</th>
                             <th class="hidden-phone"><i class="fa fa-question-circle"></i>Participants</th>
                             <th><i class="fa fa-bookmark"></i>Téléphone</th>
                             <th><i class="fa fa-bookmark"></i>E-mail</th>
@@ -20,75 +22,37 @@
                             <th></th>
                         </tr>
                         </thead>
-                        <tbody>
-                        <tr>
-                            <td class="avatar"><img src="/assets/images/logo.png" class="img-fluid" alt="parthub" style="max-width: 130px"></td>
-                            <td>
-                                <a href="basic_table.html#">Théo B.</a>
-                            </td>
-                            <td>06.20.10.33.22</td>
-                            <td>tB@lussac.com</td>
-                           <td><button type="button" class="btn btn-round btn-success">Participe</button></td>
-
-                        </tr>
-                        <tr>
-
-                            <td class="avatar"><img src="/assets/images/logo.png" class="img-fluid" alt="parthub" style="max-width: 130px"></td>
-                            <td>
-                                <a href="basic_table.html#">Théo B.</a>
-                            </td>
-                            <td>06.20.10.33.22</td>
-                            <td>tB@lussac.com</td>
-                            <td>
-                                <button class="btn btn-round btn-primary">Peut-être</button>
-                            </td>
-                        </tr>
-                        <tr>
-
-                            <td class="avatar"><img src="/assets/images/logo.png" class="img-fluid" alt="parthub" style="max-width: 130px"></td>
-                            <td>
-                                <a href="basic_table.html#">Théo B.</a>
-                            </td>
-                            <td>06.20.10.33.22</td>
-                            <td>tB@lussac.com</td>
-                            <td><button type="button" class="btn btn-round btn-danger">Participe pas</button></td>
-                        </tr>
-                        <tr>
-                            <td class="avatar"><img src="/assets/images/logo.png" class="img-fluid" alt="parthub" style="max-width: 130px"></td>
-                            <td>
-                                <a href="basic_table.html#">Théo B.</a>
-                            </td>
-                            <td>06.20.10.33.22</td>
-                            <td>tB@lussac.com</td>
-                            <td><button type="button" class="btn btn-round btn-success">Participe</button></td>
-                        </tr>
-                        <tr>
-
-                            <td class="avatar"><img src="/assets/images/logo.png" class="img-fluid" alt="parthub" style="max-width: 130px"></td>
-                            <td>
-                                <a href="basic_table.html#">Théo B.</a>
-                            </td>
-                            <td>06.20.10.33.22</td>
-                            <td>tB@lussac.com</td>
-                            <td><button type="button" class="btn btn-round btn-success">Participe</button></td>
-                        </tr>
-                        </tbody>
                     </table>
                 </div>
+            </div>
 
+                        <ul class="px-0">
+{#                            {%  if i is divisible by(2) %}#}
+{#                            {% set i = 0 %}#}
+{#                                {%  set i = i +1 %}#}
+                            {% for guest in guests %}
+
+                                <li class="list-group-item" style="background-color: #eeeeee">
+                                    <div class="d-flex justify-content-between" >
+
+                                        <div>{{ guest.picture }}</div>
+                                        <div>{{ guest.firstname }} {{ guest.lastname }}</div>
+                                        <div>{{ guest.telephone }}</div>
+                                        <div>{{ guest.email }}</div>
+                                       <div>{% if guest.participate == 1 %}
+                                           <button type="button" class="btn btn-round btn-success"> Participe </button>
+                                       </div>
+                                            {% else %}
+                                                <div><button type="button" class="btn btn-round btn-danger">Participe pas</button>
+                                                </div>
+                                                {% endif %}
+                                        {% endfor %}
+                                    </div>
+                                </li>
+{#                            {% endif %}#}
+                        </ul>
             </div>
         </div>
     </div>
 </div>
-<div class="bg-light border rounded-3">
-    <div class="col-md-12">
-        <div class="content-panel">
-                <td>
-                </td>
-            </table>
-
-        </div>
-    </div>
-</div>
-
 {% endblock %}

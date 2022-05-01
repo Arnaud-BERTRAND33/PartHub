@@ -8,11 +8,11 @@ class GuestsController extends AbstractController
 {
     public function guests(): string
     {
-        $guests = new GuestsManager();
-        $guests->selectGuests();
+        $guestManager = new GuestsManager();
+        $guests = $guestManager->selectGuests();
 
-//        var_dump($guests);
+//       var_dump($guests);die;
 
-        return $this->twig->render('Guests/guests.html.twig');
+        return $this->twig->render('Guests/guests.html.twig', ["guests" => $guests]);
     }
 }
