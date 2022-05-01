@@ -2,7 +2,7 @@
 
 namespace App\Model;
 
-class DashboardManager extends AbstractManager
+class PartyManager extends AbstractManager
 {
     public const TABLE = 'event';
 
