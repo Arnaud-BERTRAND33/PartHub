@@ -14,8 +14,10 @@ class ShoppingListController extends AbstractController
             throw new LoginRequiredException();
         }
     }
-    public function list(): string
+    public function list(int $partyId): string
     {
-        return $this->twig->render('List/list.html.twig');
+        return $this->twig->render('List/list.html.twig', [
+            'party_id' => $partyId,
+        ]);
     }
 }

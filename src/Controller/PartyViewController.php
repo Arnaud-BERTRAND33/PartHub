@@ -15,7 +15,7 @@ class PartyViewController extends AbstractController
         }
     }
     /** Remettre (int $partyId) après avoir réalisé requête */
-    public function view(): string
+    public function view(int $partyId): string
     {
 
         if ($_SERVER['REQUEST_METHOD'] === "POST") {
@@ -38,6 +38,8 @@ class PartyViewController extends AbstractController
             move_uploaded_file($_FILES['picture']['tmp_name'], $uploadFile);
         }
 
-        return $this->twig->render('PartyView/partyView.html.twig');
+        return $this->twig->render('PartyView/partyView.html.twig', [
+            'party_id' => $partyId,
+        ]);
     }
 }
