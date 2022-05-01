@@ -2,8 +2,8 @@
 
 namespace App\Controller;
 
+
 use App\Model\CommentsManager;
-use App\Model\UserManager;
 
 class CommentsController extends AbstractController
 {

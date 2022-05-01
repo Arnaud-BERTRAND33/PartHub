@@ -14,9 +14,7 @@ class ConnexionController extends AbstractController
             $user = $connexionManager->selectOneByEmail($credentials['email']);
             if ($user && password_verify($credentials['password'], $user['password'])) {
                 $_SESSION['user_id'] = $user['id'];
-                return header('Location:/dashboard');
-            } else {
-                    return $this->twig->render('Connexion/connexion.html.twig');
+                header('Location:/dashboard');
             }
         }
 
@@ -28,8 +26,7 @@ class ConnexionController extends AbstractController
     public function inscription(): string
     {
 
-
-                $error = array();
+        $error = array();
 
         if ($_POST) {
             if (!isset($_POST['firstname']) || $_POST['firstname'] === '') {

@@ -2,10 +2,20 @@
 
 namespace App\Controller;
 
+use App\Error\LoginRequiredException;
+
 class PartyViewController extends AbstractController
 {
+    public function __construct()
+    {
+        parent::__construct();
+
+        if (!$this->user) {
+            throw new LoginRequiredException();
+        }
+    }
     /** Remettre (int $partyId) après avoir réalisé requête */
-    public function view(): string
+    public function view(int $partyId): string
     {
 
         if ($_SERVER['REQUEST_METHOD'] === "POST") {
@@ -28,6 +38,8 @@ class PartyViewController extends AbstractController
             move_uploaded_file($_FILES['picture']['tmp_name'], $uploadFile);
         }
 
-        return $this->twig->render('PartyView/partyView.html.twig');
+        return $this->twig->render('PartyView/partyView.html.twig', [
+            'party_id' => $partyId,
+        ]);
     }
 }
