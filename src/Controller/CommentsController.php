@@ -3,29 +3,32 @@
 namespace App\Controller;
 
 use App\Model\CommentsManager;
+use App\Model\UserManager;
 
 class CommentsController extends AbstractController
 {
-    public function comments(): string
+    public function comments(int $eventId): string
     {
-        $CommentManager = new CommentsManager();
-        $comment = $CommentManager->selectAll('date');
+        $commentManager = new CommentsManager();
 
-        return $this->twig->render('Comments/comments.html.twig', [
-            'comment' => $comment
-        ]);
-    }
+        $comments = $commentManager->selectByPartyId($eventId);
 
-    public function add(): void
-    {
+
+
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $comment = array_map('trim', $_POST);
 
-            $CommentManager = new CommentsManager();
-            $CommentManager->insert($comment);
+            $comment['event_id'] = '1';
+            $comment['user_id'] = '2';
 
-            header('Location:');
-            die();
+            $commentsManager = new CommentsManager();
+            $commentsManager->insert($comment);
+            header('Location: /party/comments?party_id=' . $eventId);
         }
+
+        return $this->twig->render('Comments/comments.html.twig', [
+            'comments' => $comments,
+        ]);
     }
+
 }
