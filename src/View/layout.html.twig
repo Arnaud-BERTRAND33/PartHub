@@ -5,7 +5,7 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>{% block title %}{% endblock %}</title>
+    <title>{% block title %}Parthub{% endblock %}</title>
 
     {% block stylesheets %}
 
@@ -27,20 +27,20 @@
             </button>
         </div>
 
-        <a class="navbar-brand col-md-3 col-lg-2 col-sm-3 col-xs-2 me-0" href="#"><img src="/assets/images/logo.png" class="img-fluid" alt="parthub" style="max-width: 130px"></a>
+        <a class="navbar-brand col-md-3 col-lg-2 col-sm-3 col-xs-2 me-0" href="/dashboard"><img src="/assets/images/logo.png" class="img-fluid" alt="parthub" style="max-width: 130px"></a>
 
         <div class="d-flex align-items-center justify-content-end">
 
             <div class="flex-shrink-0 dropdown">
-                <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
-                    <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
+                <a href="#" class="d-block text-decoration-none dropdown-toggle link-light" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
+                    <img src="/upload/{{ user.picture }}" alt="Avatar" width="32" height="32" class="rounded-circle"> {{ user.firstname}}
                 </a>
                 <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2" style="">
-                    <li><a class="dropdown-item" href="#">Nouvelle soirée...</a></li>
+                    <li><a class="dropdown-item" href="/party/add">Nouvelle soirée...</a></li>
                     <li><a class="dropdown-item" href="#">Settings</a></li>
                     <li><a class="dropdown-item" href="#">Profile</a></li>
                     <li><hr class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="#">Sign out</a></li>
+                    <li><a class="dropdown-item" href="/logout">Déconnexion</a></li>
                 </ul>
             </div>
         </div>
@@ -54,16 +54,22 @@
     <div class="row">
         <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block vh-100 text-white bg-blue sidebar collapse position-fixed">
             <div class="position-sticky pt-3">
+                {% if not party_id %}
+                    <ul class="nav nav-pills flex-column mb-auto">
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="/dashboard"> <i class="bi bi-speedometer2"></i><span class="ms-2">Dashboard</span></a></li>
+                    </ul>
+                {% else %}
                 <ul class="nav nav-pills flex-column mb-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#"> <i class="bi bi-speedometer2"></i><span class="ms-2">Dashboard</span></a>
+                        <a class="nav-link active" aria-current="page" href="/dashboard"> <i class="bi bi-speedometer2"></i><span class="ms-2">Dashboard</span></a>
                     </li>
-                    <li> <a href="#" class="nav-link text-white"> <i class="bi bi-cup-straw"></i><span class="ms-2">Soirée</span> </a> </li>
-                    <li> <a href="#" class="nav-link text-white"> <i class="bi bi-cart2"></i><span class="ms-2">Liste des achats</span> </a> </li>
-                    <li> <a href="#" class="nav-link text-white"> <i class="bi bi-currency-euro"></i><span class="ms-2">Budget</span> </a> </li>
-                    <li> <a href="#" class="nav-link text-white"> <i class="bi bi-people-fill"></i><span class="ms-2">Participants</span> </a> </li>
-                    <li> <a href="#" class="nav-link text-white"> <i class="bi bi-chat"></i><span class="ms-2">Commentaires</span> </a> </li>
+                    <li> <a href="/party/dashboard?party_id={{ party_id }}" class="nav-link text-white"> <i class="bi bi-cup-straw"></i><span class="ms-2">Soirée</span> </a> </li>
+                    <li> <a href="/party/shopping-list?party_id={{ party_id }}" class="nav-link text-white"> <i class="bi bi-cart2"></i><span class="ms-2">Liste des achats</span> </a> </li>
+                    <li> <a href="/party/budget?party_id={{ party_id }}" class="nav-link text-white"> <i class="bi bi-currency-euro"></i><span class="ms-2">Budget</span> </a> </li>
+                    <li> <a href="/party/guests?party_id={{ party_id }}" class="nav-link text-white"> <i class="bi bi-people-fill"></i><span class="ms-2">Participants</span> </a> </li>
+                    <li> <a href="/party/comments?party_id={{ party_id }}" class="nav-link text-white"> <i class="bi bi-chat"></i><span class="ms-2">Commentaires</span> </a> </li>
                 </ul>
+                {% endif %}
             </div>
         </nav>
     </div>

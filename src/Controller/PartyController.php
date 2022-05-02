@@ -58,16 +58,4 @@ class PartyController extends AbstractController
             'errors' => $errors,
             ]);
     }
-
-//    public function selectOneById(): string
-//    {
-//        $partyselect = new PartyManager();
-//        $event['id'] = 2;
-//
-//        $test = $partyselect->selectOneById($event);
-//
-//        var_dump($test);
-//
-//        return $this->twig->render('PartyAdd/partyView.html.twig');
-//    }
 }
