@@ -5,7 +5,6 @@ namespace App\Model;
 class PartyManager extends AbstractManager
 {
     public const TABLE = 'event';
-//    public const JOINTURE = 'user_has_event';
 
     /**Insert info Event dans table Event*/
     public function insert(array $event): void
