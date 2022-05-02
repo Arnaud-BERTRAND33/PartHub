@@ -53,6 +53,7 @@ class PartyController extends AbstractController
 
                 // inscription du user connecté à sa soirée
                 header('Location:/party/dashboard');
+                return '';
             }
         }
         return $this->twig->render('PartyAdd/partyAdd.html.twig', [
