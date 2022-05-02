@@ -22,18 +22,9 @@ class CommentsManager extends AbstractManager
     public function selectByPartyId($eventId): array
     {
         $query = "SELECT c.comment, c.date, u.firstname, u.picture FROM comment c
-JOIN user u ON c.user_id=u.id WHERE c.event_id=1;";
+JOIN user u ON c.user_id=u.id WHERE c.event_id=$eventId;";
 
         return $this->pdo->query($query)->fetchAll() ?: [];
     }
 
-
-//    public function update(array $item): bool
-//    {
-//        $statement = $this->pdo->prepare("UPDATE " . self::TABLE . " SET `title` = :title WHERE id=:id");
-//        $statement->bindValue('id', $item['id'], \PDO::PARAM_INT);
-//        $statement->bindValue('title', $item['title'], \PDO::PARAM_STR);
-//
-//        return $statement->execute();
-//    }
 }
