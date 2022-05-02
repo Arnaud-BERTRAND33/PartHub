@@ -22,7 +22,8 @@ class PartyController extends AbstractController
             if (empty($_POST['title'])) {
                 $errors['title'] = 'Titre requis';
             }
-            if (date('d/m/y') < $_POST['date']) {
+            if (date('y/m/d') < $_POST['date']) {
+                var_dump($_POST['date']);
                 $errors['date'] = 'La date doit être postérieure à la date actuelle ';
             }
             if (!preg_match('/^[0-9]*$/', $_POST['zip'])) {
@@ -44,7 +45,7 @@ class PartyController extends AbstractController
                 $event = array_map('trim', $_POST);
                 $dateCreation = date('Y-m-d');
 
-                $event['user_id'] = 2;
+                $event['user_id'] = $this->user['id'];
                 $event['picture'] = $file;
                 $event['creation_date'] = $dateCreation;
                 $partyadd = new PartyManager();

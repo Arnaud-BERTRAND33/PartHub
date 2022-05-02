@@ -6,7 +6,6 @@ class CommentsManager extends AbstractManager
 {
     public const TABLE = 'comment';
 
-
     public function insert(array $comment): void
     {
             $statement = $this->pdo->prepare("INSERT INTO " . self::TABLE . " (`comment`, `date`, `user_id`, `event_id`)
