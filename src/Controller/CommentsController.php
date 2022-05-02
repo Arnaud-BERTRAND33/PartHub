@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+
 use App\Model\CommentsManager;
 
 class CommentsController extends AbstractController
@@ -20,6 +21,7 @@ class CommentsController extends AbstractController
             $commentsManager = new CommentsManager();
             $commentsManager->insert($comment);
             header('Location: /party/comments?party_id=' . $eventId);
+            return '';
         }
 
         return $this->twig->render('Comments/comments.html.twig', [

@@ -4,64 +4,26 @@
 
 
 {% block content %}
-
-    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 my-4">
+        {% for party in partys %}
         <div class="col">
             <div class="card shadow-sm">
-                <img src="/assets/images/event2.jpg" width="100%" height="225">
+                <img src="/upload/{{ party.picture }}" width="100%" height="225">
                 <div class="card-body">
                     <p class="card-text">
-                    <h2>Anniversaire Arnaud</h2>
-                    <small class="d-block">Thème LATEX</small>
-                    <small class="d-block">Date: 01/01/2022</small>
+                    <h2>{{ party.name }}</h2>
+                    <small class="d-block">{{ party.theme }}</small>
+                    <small class="d-block">Date: {{ party.date }}</small>
                     </p>
                     <div class="d-flex justify-content-between align-items-center">
-                        <div class="btn-group">
-                            <button type="button" class="btn btn-sm btn-outline-secondary">Voir l'évènement</button>
+                        <div>
+                            <a class="btn btn-secondary" role="button" href="/party/dashboard?party_id={{ party.id }}">Voir l'événemnt</a>
                         </div>
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2829.151386044369!2d-0.5714710842624451!3d44.83885028297158!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd5527ce1416d24d%3A0x69bd9f0ed135754a!2s4%20Rue%20de%20la%20Coquille%2C%2033000%20Bordeaux!5e0!3m2!1sfr!2sfr!4v1650297801225!5m2!1sfr!2sfr" width="200" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col">
-            <div class="card shadow-sm">
-                <img src="/assets/images/event1.jpg" width="100%" height="225">
-                <div class="card-body">
-                    <p class="card-text">
-                    <h2>Anniversaire JoJo</h2>
-                    <small class="d-block">Thème LATEX</small>
-                    <small class="d-block">Date: 01/01/2022</small>
-                    </p>
-                    <div class="d-flex justify-content-between align-items-center">
-                        <div class="btn-group">
-                            <button type="button" class="btn btn-sm btn-outline-secondary">Voir l'évènement</button>
-                        </div>
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2829.151386044369!2d-0.5714710842624451!3d44.83885028297158!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd5527ce1416d24d%3A0x69bd9f0ed135754a!2s4%20Rue%20de%20la%20Coquille%2C%2033000%20Bordeaux!5e0!3m2!1sfr!2sfr!4v1650297801225!5m2!1sfr!2sfr" width="200" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card shadow-sm">
-                <img src="/assets/images/event2.jpg" width="100%" height="225">
-                <div class="card-body">
-                    <p class="card-text">
-                    <h2>Anniversaire Adrien</h2>
-                    <small class="d-block">Thème LATEX</small>
-                    <small class="d-block">Date: 01/01/2022</small>
-                    </p>
-                    <div class="d-flex justify-content-between align-items-center">
-                        <div class="btn-group">
-                            <button type="button" class="btn btn-sm btn-outline-secondary">Voir l'évènement</button>
-                        </div>
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2829.151386044369!2d-0.5714710842624451!3d44.83885028297158!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd5527ce1416d24d%3A0x69bd9f0ed135754a!2s4%20Rue%20de%20la%20Coquille%2C%2033000%20Bordeaux!5e0!3m2!1sfr!2sfr!4v1650297801225!5m2!1sfr!2sfr" width="200" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-
-                    </div>
-                </div>
-            </div>
-        </div>
+        {% endfor%}
     </div>
 
 {% endblock %}
