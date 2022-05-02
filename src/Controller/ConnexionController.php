@@ -14,7 +14,7 @@ class ConnexionController extends AbstractController
             $user = $connexionManager->selectOneByEmail($credentials['email']);
             if ($user && password_verify($credentials['password'], $user['password'])) {
                 $_SESSION['user_id'] = $user['id'];
-                return header('Location:/dashboard');
+                header('Location:/dashboard');
             } else {
                     return $this->twig->render('Connexion/connexion.html.twig');
             }
