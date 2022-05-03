@@ -11,20 +11,35 @@ class CommentsController extends AbstractController
         $commentManager = new CommentsManager();
 
         $comments = $commentManager->selectByPartyId($eventId);
+
+        $error = array();
+
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $comment = array_map('trim', $_POST);
+            if (!isset($_POST['comment']) || $_POST['comment'] === '') {
+                $error['comment'] = 'Veuillez écrire un commentaire';
+            }
 
-            $comment['event_id'] = '1';
-            $comment['user_id'] = '2';
+            if (!$error) {
+                $comment = array_map('trim', $_POST);
 
-            $commentsManager = new CommentsManager();
-            $commentsManager->insert($comment);
-            header('Location: /party/comments?party_id=' . $eventId);
-            return '';
+                $comment['event_id'] = $_GET['party_id'];
+                $comment['user_id'] = $this->user['id'];
+                $comment['picture'] = $this->user['picture'];
+
+                $commentsManager = new CommentsManager();
+                $commentsManager->insert($comment);
+                header('Location: /party/comments?party_id=' . $eventId);
+                return '';
+            }
+            return $this->twig->render('Comments/comments.html.twig', [
+                'error' => $error,
+                'comments' => $comments,
+            ]);
+
         }
-
         return $this->twig->render('Comments/comments.html.twig', [
             'comments' => $comments,
+
         ]);
     }
 }
