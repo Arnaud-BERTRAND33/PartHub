@@ -16,7 +16,7 @@ class CommentsController extends AbstractController
             $comment = array_map('trim', $_POST);
 
             $comment['event_id'] = '1';
-            $comment['user_id'] = '2';
+            $comment['user_id'] = '1';
 
             $commentsManager = new CommentsManager();
             $commentsManager->insert($comment);
