@@ -6,7 +6,7 @@ use App\Model\UserManager;
 
 class ConnexionController extends AbstractController
 {
-    public function login()
+    public function login(): ?string
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $credentials = array_map('trim', $_POST);
@@ -15,12 +15,13 @@ class ConnexionController extends AbstractController
             if ($user && password_verify($credentials['password'], $user['password'])) {
                 $_SESSION['user_id'] = $user['id'];
                 header('Location:/dashboard');
+                return null;
             } else {
-                    return $this->twig->render('Connexion/connexion.html.twig');
+                return $this->twig->render('Connexion/connexion.html.twig');
             }
         }
 
-            return $this->twig->render('Connexion/connexion.html.twig');
+        return $this->twig->render('Connexion/connexion.html.twig');
     }
 
 
@@ -28,8 +29,7 @@ class ConnexionController extends AbstractController
     public function inscription(): string
     {
 
-
-                $error = array();
+        $error = array();
 
         if ($_POST) {
             if (!isset($_POST['firstname']) || $_POST['firstname'] === '') {
