@@ -37,7 +37,6 @@ class PartyManager extends AbstractManager
 
         return $statement->fetchAll() ?: null;
     }
-
 }
 
 //    public function addUserToParty(int $userId, int $eventId, bool $participate = true)
