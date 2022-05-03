@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-
 use App\Model\CommentsManager;
 
 class CommentsController extends AbstractController
@@ -28,5 +27,4 @@ class CommentsController extends AbstractController
             'comments' => $comments,
         ]);
     }
-
 }
