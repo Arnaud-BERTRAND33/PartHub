@@ -41,7 +41,7 @@ class PartyController extends AbstractController
             if (!$errors) {
                 $uniqueName = uniqid('', true);
                 $file = $uniqueName . "." . $extension;
-                move_uploaded_file($tmpName, __DIR__ . '/../public/uploads' . $file);
+                move_uploaded_file($tmpName, __DIR__ . '/uploads' . $file);
                 $event = array_map('trim', $_POST);
                 $dateCreation = date('Y-m-d');
 
