@@ -12,29 +12,38 @@
                 <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="title">Titre de la soirée :</label>
-                            <input type="text" class="form-control" id="title" placeholder="Soirée moustache" required="Champs obligatoire">
+                            <input type="text" class="form-control" id="title" name="title" placeholder="Soirée moustache">
+                            {% if errors.title is defined %}
+                                <p class="text-danger">{{ errors.title }}</p>
+                            {% endif %}
                         </div>
                         <div class="form-group col-md-6">
                             <label for="theme">Thème de la soirée :</label>
-                            <input type="texte" class="form-control" id="theme" placeholder="Poils et testostérone">
+                            <input type="texte" class="form-control" id="theme" name="theme" placeholder="Poils et testostérone">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="date">Date de la soirée :</label>
-                        <input type="date" class="form-control" id="date" placeholder="XX/XX/XXXX">
+                        <input type="date" class="form-control" id="date" name="date" placeholder="XX/XX/XXXX">
+                        {% if errors.date is defined %}
+                            <p class="text-danger">{{ errors.date }}</p>
+                        {% endif %}
                     </div>
                     <div class="form-group">
                         <label for="address">Adresse de la soirée :</label>
-                        <input type="text" class="form-control" id="address" placeholder="2 chemin de la Fête">
+                        <input type="text" class="form-control" id="address" name="address" placeholder="2 chemin de la Fête">
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="city">Ville :</label>
-                            <input type="text" class="form-control" id="city" placeholder="Bordeaux">
+                            <input type="text" class="form-control" id="city" name="city" placeholder="Bordeaux">
                         </div>
                         <div class="form-group col-md-2">
                             <label for="zip">Code postal :</label>
-                            <input type="text" class="form-control" id="zip" placeholder="33000">
+                            <input type="text" class="form-control" id="zip" name="zip" placeholder="33000">
+                            {% if errors.zip is defined %}
+                                <p class="text-danger">{{ errors.zip }}</p>
+                            {% endif %}
                         </div>
                     </div>
                     <div class="form-group">
@@ -49,10 +58,13 @@
         <div class="card-body">
 
                     <label for="description"></label>
-                    <textarea class="form-control" id="description" rows="4" placeholder="Soirée moustache ramenez vos rasoirs !!!"></textarea>
+                    <textarea class="form-control" id="description" name="description" rows="4" placeholder="Soirée moustache ramenez vos rasoirs !!!"></textarea>
             <br>
             <label for="file">Photo de couverture :</label>
-            <input type="file" name="file">
+            <input type="file" id="picture" name="picture">
+            {% if errors.picture is defined %}
+                <p class="text-danger">{{ errors.picture }}</p>
+            {% endif %}
          </div>
     </div>
 
@@ -61,15 +73,21 @@
     <div class="card-body">
         <p class="card-text">
 
-            <div class="form-group">
+        <div class="form-group">
                 <label for="playlist"></label>
-            <img src="/assets/images/spotify.png" class="img-fluid text-center" alt="Responsive image" width="10%"> <textarea class="form-control" id="playlist" rows="1" placeholder="url : spotify"></textarea>
-            </div>
+            <img src="/assets/images/spotify.png" class="img-fluid text-center" alt="Responsive image" width="10%"> <textarea class="form-control" id="playlist_url" name="playlist_url" rows="1" placeholder="url : spotify"></textarea>
+            {% if errors.playlist_url is defined %}
+                <p class="text-danger">{{ errors.playlist_url }}</p>
+            {% endif %}
+        </div>
         </p>
-            <div class="d-flex justify-content-end"> <a href="#" class="btn btn-outline-success">Créer soirée</a></div>
+
+        <div class="d-flex justify-content-end"> <input type="submit" value="créer soirée" class="btn btn-outline-success"></div>
 
     </di>
     </div>
     </div>
 </form>
 {% endblock %}
+
+
