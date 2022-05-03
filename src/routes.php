@@ -14,7 +14,7 @@ return [
     'contact' => ['HomeController', 'contact',],
     'thanks' => ['HomeController', 'thanks',],
     'dashboard' => ['DashboardController', 'dashboard',],
-    'party/dashboard' => ['PartyDashboardController', 'dashboard', ['party_id']],
+    'party/dashboard' => ['PartyDashboardController', 'partyDashboard', ['party_id']],
     'party/add' => ['PartyController', 'add'],
     'party/view' => ['PartyController', 'view', ['party_id']],
     'party/shopping-list' => ['ShoppingListController', 'list', ['party_id']],

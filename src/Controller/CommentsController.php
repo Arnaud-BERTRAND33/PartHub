@@ -6,11 +6,11 @@ use App\Model\CommentsManager;
 
 class CommentsController extends AbstractController
 {
-    public function comments(int $eventId): string
+    public function comments(int $partyId): string
     {
         $commentManager = new CommentsManager();
 
-        $comments = $commentManager->selectByPartyId($eventId);
+        $comments = $commentManager->selectByPartyId($partyId);
 
         $error = array();
 
@@ -22,13 +22,12 @@ class CommentsController extends AbstractController
             if (!$error) {
                 $comment = array_map('trim', $_POST);
 
-                $comment['event_id'] = $_GET['party_id'];
+                $comment['party_id'] = $_GET['party_id'];
                 $comment['user_id'] = $this->user['id'];
-                $comment['picture'] = $this->user['picture'];
 
                 $commentsManager = new CommentsManager();
                 $commentsManager->insert($comment);
-                header('Location: /party/comments?party_id=' . $eventId);
+                header('Location: /party/comments?party_id=' . $partyId);
                 return '';
             }
             return $this->twig->render('Comments/comments.html.twig', [
@@ -39,6 +38,7 @@ class CommentsController extends AbstractController
         }
         return $this->twig->render('Comments/comments.html.twig', [
             'comments' => $comments,
+            'party_id' => $partyId,
 
         ]);
     }

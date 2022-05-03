@@ -10,21 +10,19 @@ class CommentsManager extends AbstractManager
     {
 
             $statement = $this->pdo->prepare("INSERT INTO " . self::TABLE .
-            " (`comment`, `date`, `user_id`, `event_id`, `picture` )
-            VALUES (:comment, NOW(), :user_id, :event_id, :picture)");
+            " (`comment`, `date`, `user_id`, `party_id`)
+            VALUES (:comment, NOW(), :user_id, :party_id)");
 
             $statement->bindValue('comment', $comment['comment']);
             $statement->bindValue('user_id', $comment['user_id']);
-            $statement->bindValue('event_id', $comment['event_id']);
-        $statement->bindValue('picture', $comment['picture']);
-
+            $statement->bindValue('party_id', $comment['party_id']);
             $statement->execute();
     }
 
-    public function selectByPartyId($eventId): array
+    public function selectByPartyId($partyId): array
     {
-        $query = "SELECT c.comment, c.date, c.picture, u.firstname, u.picture FROM comment c
-JOIN user u ON c.user_id=u.id WHERE c.event_id=$eventId;";
+        $query = "SELECT c.comment, c.date, u.firstname, u.picture FROM comment c
+JOIN user u ON c.user_id=u.id WHERE c.party_id=$partyId ORDER BY c.date ASC";
 
         return $this->pdo->query($query)->fetchAll() ?: [];
     }
