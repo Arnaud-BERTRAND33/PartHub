@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: aurelwcs
@@ -20,7 +21,6 @@ class HomeController extends AbstractController
     public function contact(): string
     {
         $error = array();
-
         if ($_POST) {
             if (!isset($_POST['name']) || $_POST['name'] === '') {
                 $error['name'] = "Veuillez renseigner votre nom";
