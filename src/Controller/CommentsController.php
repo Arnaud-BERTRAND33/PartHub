@@ -4,7 +4,7 @@ namespace App\Controller;
 
 class CommentsController extends AbstractController
 {
-    public function comments(int $partyId): string
+    public function comments(): string
     {
         // récuparations des commentaires de la party $partyId
         // $comments = TODO
