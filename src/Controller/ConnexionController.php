@@ -14,22 +14,18 @@ class ConnexionController extends AbstractController
             $user = $connexionManager->selectOneByEmail($credentials['email']);
             if ($user && password_verify($credentials['password'], $user['password'])) {
                 $_SESSION['user_id'] = $user['id'];
-                return header('Location:/dashboard');
-            } else {
-                    return $this->twig->render('Connexion/connexion.html.twig');
+                header('Location:/dashboard');
             }
         }
 
-            return $this->twig->render('Connexion/connexion.html.twig');
+        return $this->twig->render('Connexion/connexion.html.twig');
     }
-
 
 
     public function inscription(): string
     {
 
-
-                $error = array();
+        $error = array();
 
         if ($_POST) {
             if (!isset($_POST['firstname']) || $_POST['firstname'] === '') {
@@ -71,9 +67,9 @@ class ConnexionController extends AbstractController
             }
         }
 
-            return $this->twig->render('Connexion/inscription.html.twig', [
-                'error' => $error,
-            ]);
+        return $this->twig->render('Connexion/inscription.html.twig', [
+            'error' => $error,
+        ]);
     }
 
     public function logout(): void

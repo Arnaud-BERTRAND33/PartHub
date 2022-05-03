@@ -2,10 +2,23 @@
 
 namespace App\Controller;
 
+use App\Error\LoginRequiredException;
+
 class ShoppingListController extends AbstractController
 {
-    public function list(): string
+    public function __construct()
     {
-        return $this->twig->render('List/list.html.twig');
+        parent::__construct();
+
+        if (!$this->user) {
+            throw new LoginRequiredException();
+        }
+    }
+
+    public function list(int $partyId): string
+    {
+        return $this->twig->render('List/list.html.twig', [
+            'party_id' => $partyId,
+        ]);
     }
 }

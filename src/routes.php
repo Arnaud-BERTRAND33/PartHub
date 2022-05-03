@@ -10,6 +10,7 @@ return [
     '' => ['HomeController', 'index',],
     'login' => ['ConnexionController', 'login',],
     'login/inscription' => ['ConnexionController', 'inscription',],
+    'logout' => ['ConnexionController', 'logout',],
     'contact' => ['HomeController', 'contact',],
     'thanks' => ['HomeController', 'thanks',],
     'dashboard' => ['DashboardController', 'dashboard',],

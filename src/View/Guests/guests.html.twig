@@ -27,29 +27,45 @@
             </div>
 
                         <ul class="px-0">
-{#                            {%  if i is divisible by(2) %}#}
-{#                            {% set i = 0 %}#}
-{#                                {%  set i = i +1 %}#}
                             {% for guest in guests %}
-
-                                <li class="list-group-item" style="background-color: #eeeeee">
+                            {% if loop.index0 is divisible by(2) %}
+                                <li class="list-group-item" style="background-color: #eeeeee ">
                                     <div class="d-flex justify-content-between" >
-
                                         <div>{{ guest.picture }}</div>
                                         <div>{{ guest.firstname }} {{ guest.lastname }}</div>
                                         <div>{{ guest.telephone }}</div>
                                         <div>{{ guest.email }}</div>
-                                       <div>{% if guest.participate == 1 %}
-                                           <button type="button" class="btn btn-round btn-success"> Participe </button>
-                                       </div>
-                                            {% else %}
-                                                <div><button type="button" class="btn btn-round btn-danger">Participe pas</button>
-                                                </div>
-                                                {% endif %}
+                                        <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                                            <button type="button" class="btn btn-success">Oui</button>
+                                            <button type="button" class="btn btn-warning">Peut-être</button>
+                                            <button type="button" class="btn btn-danger">Non</button>
+                                        </div>
+{#                                       <div>{% if guest.participate == 1 %}#}
+{#                                           <button type="button" class="btn btn-round btn-success">Participe </button>#}
+{#                                       </div>#}
+{#                                            {% else %}#}
+{#                                                <div><button type="button" class="btn btn-round btn-danger">Ne Participe pas</button>#}
+{#                                                </div>#}
+{#                                                {% endif %}#}
+                                        {% else %}
+                            <li class="list-group-item" style="background-color: white ">
+                                <div class="d-flex justify-content-between" >
+                                    <div>{{ guest.picture }}</div>
+                                    <div>{{ guest.firstname }} {{ guest.lastname }}</div>
+                                    <div>{{ guest.telephone }}</div>
+                                    <div>{{ guest.email }}</div>
+                                    <div>{% if guest.participate == 1 %}
+                                        <button type="button" class="btn btn-round btn-success"> Participe </button>
+                                    </div>
+                                    {% else %}
+                                        <div><button type="button" class="btn btn-round btn-danger">Ne Participe pas</button>
+                                        </div>
+                                    {% endif %}
+
+                                        {% endif %}
                                         {% endfor %}
                                     </div>
                                 </li>
-{#                            {% endif %}#}
                         </ul>
             </div>
         </div>
