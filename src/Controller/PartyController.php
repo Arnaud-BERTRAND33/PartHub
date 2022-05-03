@@ -41,18 +41,21 @@ class PartyController extends AbstractController
             if (!$errors) {
                 $uniqueName = uniqid('', true);
                 $file = $uniqueName . "." . $extension;
-                move_uploaded_file($tmpName, __DIR__ . '/uploads' . $file);
-                $event = array_map('trim', $_POST);
+
+                move_uploaded_file($tmpName, __DIR__ . '/../public/uploads' . $file);
+                $party = array_map('trim', $_POST);
+
                 $dateCreation = date('Y-m-d');
 
-                $event['user_id'] = $this->user['id'];
-                $event['picture'] = $file;
-                $event['creation_date'] = $dateCreation;
+                $party['user_id'] = $this->user['id'];
+                $party['picture'] = $file;
+                $party['creation_date'] = $dateCreation;
                 $partyadd = new PartyManager();
-                $partyadd->insert($event);
+                $partyId = $partyadd->insert($party);
 
                 // inscription du user connecté à sa soirée
-                header('Location:/party/dashboard');
+                header('Location:/party/dashboard?party_id=' . $partyId);
+                return '';
             }
         }
         return $this->twig->render('PartyAdd/partyAdd.html.twig', [
