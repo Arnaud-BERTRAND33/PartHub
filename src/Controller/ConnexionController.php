@@ -27,8 +27,6 @@ class ConnexionController extends AbstractController
         return $this->twig->render('Connexion/connexion.html.twig');
     }
 
-
-
     public function inscription(): string
     {
 
@@ -76,9 +74,9 @@ class ConnexionController extends AbstractController
             }
         }
 
-            return $this->twig->render('Connexion/inscription.html.twig', [
-                'error' => $error,
-            ]);
+        return $this->twig->render('Connexion/inscription.html.twig', [
+            'error' => $error,
+        ]);
     }
 
     public function logout(): void
