@@ -61,7 +61,7 @@ class PartyController extends AbstractController
         }
         return $this->twig->render('PartyAdd/partyAdd.html.twig', [
             'errors' => $errors,
-            ]);
+        ]);
     }
 
     public function view(int $partyId): string

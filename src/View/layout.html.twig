@@ -55,7 +55,6 @@
         <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block vh-100 text-white bg-blue sidebar collapse position-fixed">
             <div class="position-sticky pt-3">
                 {% if party_id is defined %}
-
                     <ul class="nav nav-pills flex-column mb-auto">
                         <li class="nav-item"> <a href="/dashboard" class="nav-link text-white {% if current_uri starts with '/dashboard' %}active{% endif %}"> <i class="bi bi-card-checklist "></i><span class="ms-2">Tous les évènements</span> </a> </li>
                         <li class="nav-item"> <a class="nav-link text-white {% if current_uri starts with '/party/dashboard' %}active{% endif %} " aria-current="page" href="/party/dashboard?party_id={{ party_id }}"> <i class="bi bi-speedometer2"></i><span class="ms-2">Dashboard</span></a> </li>
