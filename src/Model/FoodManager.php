@@ -19,7 +19,7 @@ class FoodManager extends AbstractManager
     }
 
     /**Get foods dans table Food*/
-    public function getFoods(string $partyId): ?array
+    public function getFoods(int $partyId): ?array
     {
         $foods = $this->selectAllByPartyId($partyId);
         return $foods;

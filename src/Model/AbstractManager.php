@@ -44,7 +44,7 @@ abstract class AbstractManager
     /**
      * Get all by partyid row from database.
      */
-    public function selectAllByPartyId(string $partyId): array
+    public function selectAllByPartyId(int $partyId): array
     {
         $query = 'SELECT * FROM ' . static::TABLE . ' WHERE party_id=' . $partyId;
         return $this->pdo->query($query)->fetchAll();

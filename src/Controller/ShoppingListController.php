@@ -68,7 +68,6 @@ class ShoppingListController extends AbstractController
                     return '';
                 }
             }
-
         }
 
         return $this->twig->render('List/list.html.twig', [
@@ -76,6 +75,5 @@ class ShoppingListController extends AbstractController
             'foods' => $foods,
             'alcools' => $alcools,
         ]);
-
     }
 }

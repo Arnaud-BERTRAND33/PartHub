@@ -19,7 +19,7 @@ class AlcoolManager extends AbstractManager
     }
 
     /**Get alcools dans table Alcool*/
-    public function getAlcools(string $partyId): ?array
+    public function getAlcools(int $partyId): ?array
     {
         $alcools = $this->selectAllByPartyId($partyId);
         return $alcools;
