@@ -28,7 +28,7 @@ class PartyManager extends AbstractManager
 
         $statement->execute();
 
-        return $this->pdo->lastInsertId();
+        return (int)$this->pdo->lastInsertId();
     }
 
     public function selectAllParty(int $userId): ?array
