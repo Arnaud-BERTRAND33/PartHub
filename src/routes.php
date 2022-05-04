@@ -17,7 +17,7 @@ return [
     'party/dashboard' => ['PartyDashboardController', 'dashboard', ['party_id']],
     'party/add' => ['PartyController', 'add'],
     'party/view' => ['PartyController', 'view', ['party_id']],
-    'party/shopping-list' => ['ShoppingListController', 'list', ['party_id']],
+    'party/shopping-list' => ['ShoppingListController', 'shoppingList', ['party_id']],
     'party/guests' => ['GuestsController', 'guests', ['party_id']],
     'party/budget' => ['BudgetController', 'budget', ['party_id']],
     'party/comments' => ['CommentsController', 'comments', ['party_id']],
