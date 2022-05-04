@@ -33,7 +33,7 @@
 
             <div class="flex-shrink-0 dropdown">
                 <a href="#" class="d-block text-decoration-none dropdown-toggle link-light" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
-                    <img src="/upload/{{ user.picture }}" alt="Avatar" width="32" height="32" class="rounded-circle"> {{ user.firstname}}
+                    <img src="/uploads/{{ user.picture }}" alt="Avatar" width="32" height="32" class="rounded-circle"> {{ user.firstname}}
                 </a>
                 <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2" style="">
                     <li><a class="dropdown-item" href="/party/add">Nouvelle soirée...</a></li>
@@ -56,20 +56,20 @@
             <div class="position-sticky pt-3">
                 {% if party_id is defined %}
                     <ul class="nav nav-pills flex-column mb-auto">
-                        <li class="nav-item"> <a href="/dashboard" class="nav-link text-white"> <i class="bi bi-card-checklist"></i><span class="ms-2">Tous les événements</span> </a> </li>
-                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="/dashboard"> <i class="bi bi-speedometer2"></i><span class="ms-2">Dashboard</span></a></li>
-                        <li class="nav-item"> <a href="/party/dashboard?party_id={{ party_id }}" class="nav-link text-white"> <i class="bi bi-cup-straw"></i><span class="ms-2">Soirée</span> </a> </li>
-                        <li class="nav-item"> <a href="/party/shopping-list?party_id={{ party_id }}" class="nav-link text-white"> <i class="bi bi-cart2"></i><span class="ms-2">Liste des achats</span> </a> </li>
-                        <li class="nav-item"> <a href="/party/budget?party_id={{ party_id }}" class="nav-link text-white"> <i class="bi bi-currency-euro"></i><span class="ms-2">Budget</span> </a> </li>
-                        <li class="nav-item"> <a href="/party/guests?party_id={{ party_id }}" class="nav-link text-white"> <i class="bi bi-people-fill"></i><span class="ms-2">Participants</span> </a> </li>
-                        <li class="nav-item"> <a href="/party/comments?party_id={{ party_id }}" class="nav-link text-white"> <i class="bi bi-chat"></i><span class="ms-2">Commentaires</span> </a> </li>
+                        <li class="nav-item"> <a href="/dashboard" class="nav-link text-white {% if current_uri starts with '/dashboard' %}active{% endif %}"> <i class="bi bi-card-checklist "></i><span class="ms-2">Tous les évènements</span> </a> </li>
+                        <li class="nav-item"> <a class="nav-link text-white {% if current_uri starts with '/party/dashboard' %}active{% endif %} " aria-current="page" href="/party/dashboard?party_id={{ party_id }}"> <i class="bi bi-speedometer2"></i><span class="ms-2">Dashboard</span></a> </li>
+                        <li class="nav-item"> <a href="party/view?party_id={{ party_id }}" class="nav-link text-white {% if current_uri starts with 'party/view' %}active{% endif %}"> <i class="bi bi-cup-straw"></i><span class="ms-2">Soirée</span> </a> </li>
+                        <li class="nav-item"> <a href="/party/shopping-list?party_id={{ party_id }}" class="nav-link text-white {% if current_uri starts with '/party/shopping-list' %}active{% endif %} "> <i class="bi bi-cart2"></i><span class="ms-2">Liste des achats</span> </a> </li>
+                        <li class="nav-item"> <a href="/party/budget?party_id={{ party_id }}" class="nav-link text-white {% if current_uri starts with '/party/budget' %}active{% endif %}"> <i class="bi bi-currency-euro"></i><span class="ms-2">Budget</span> </a> </li>
+                        <li class="nav-item"> <a href="/party/guests?party_id={{ party_id }}" class="nav-link text-white {% if current_uri starts with '/party/guests' %}active{% endif %}"> <i class="bi bi-people-fill"></i><span class="ms-2">Participants</span> </a> </li>
+                        <li class="nav-item"> <a href="/party/comments?party_id={{ party_id }}" class="nav-link text-white {% if current_uri starts with '/party/comments' %}active{% endif %}"> <i class="bi bi-chat"></i><span class="ms-2">Commentaires</span> </a> </li>
                     </ul>
-                    {% else %}
-                <ul class="nav nav-pills flex-column mb-auto">
-                    <li class="nav-item"> <a href="/dashboard" class="nav-link text-white"> <i class="bi bi-card-checklist"></i><span class="ms-2">Tous les événements</span> </a> </li>
-                    <li class="nav-item"> <a href="/party/add" class="nav-link text-white"> <i class="bi bi-file-earmark-plus"></i><span class="ms-2">Ajouter un événement</span> </a> </li>
-                </ul>
-                    {% endif %}
+                {% else %}
+                    <ul class="nav nav-pills flex-column mb-auto">
+                        <li class="nav-item"> <a href="/dashboard" class="nav-link text-white {% if current_uri starts with '/dashboard' %}active{% endif %}"> <i class="bi bi-card-checklist"></i><span class="ms-2">Tous les événements</span> </a> </li>
+                        <li class="nav-item"> <a href="/party/add" class="nav-link text-white {% if current_uri starts with '/party/add' %}active{% endif %}"> <i class="bi bi-file-earmark-plus"></i><span class="ms-2">Ajouter un événement</span> </a> </li>
+                    </ul>
+                {% endif %}
             </div>
         </nav>
     </div>
@@ -99,6 +99,7 @@
 </footer>
 
 {% block js %}
+<script src="/assets/script/script.js"></script>
 <script src="/docs/5.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script>

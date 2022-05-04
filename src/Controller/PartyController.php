@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Error\LoginRequiredException;
 use App\Model\PartyManager;
 
 class PartyController extends AbstractController
@@ -41,8 +42,10 @@ class PartyController extends AbstractController
             if (!$errors) {
                 $uniqueName = uniqid('', true);
                 $file = $uniqueName . "." . $extension;
-                move_uploaded_file($tmpName, __DIR__ . '/../public/uploads' . $file);
+
+                move_uploaded_file($tmpName, __DIR__ . '/../uploads' . $file);
                 $party = array_map('trim', $_POST);
+
                 $dateCreation = date('Y-m-d');
 
                 $party['user_id'] = $this->user['id'];
@@ -58,6 +61,17 @@ class PartyController extends AbstractController
         }
         return $this->twig->render('PartyAdd/partyAdd.html.twig', [
             'errors' => $errors,
+        ]);
+    }
+
+    public function view(int $partyId): string
+    {
+        $partyManager = new PartyManager();
+        $party = $partyManager->selectOneById($partyId);
+
+        return $this->twig->render('PartyView/partyView.html.twig', [
+            'party' => $party,
+            'party_id' => $partyId,
         ]);
     }
 }

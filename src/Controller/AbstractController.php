@@ -33,5 +33,8 @@ abstract class AbstractController
         $userManager = new UserManager();
         $this->user = isset($_SESSION['user_id']) ? $userManager->selectOneById($_SESSION['user_id']) : null;
         $this->twig->addGlobal('user', $this->user);
+
+        // add global du bout d'url
+        $this->twig->addGlobal('current_uri', $_SERVER['PATH_INFO']);
     }
 }
