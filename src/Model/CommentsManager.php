@@ -8,7 +8,7 @@ class CommentsManager extends AbstractManager
 
     public function insert(array $comment): void
     {
-        $statement = $this->pdo->prepare("INSERT INTO " . self::TABLE .
+            $statement = $this->pdo->prepare("INSERT INTO " . self::TABLE .
             " (`comment`, `date`, `user_id`, `party_id`)
             VALUES (:comment, NOW(), :user_id, :party_id)");
 

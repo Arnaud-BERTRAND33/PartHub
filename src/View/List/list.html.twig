@@ -4,7 +4,12 @@
 
 
 {% block content %}
+<<<<<<< HEAD
 <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+=======
+
+
+>>>>>>> 3d6004ae16510e88cf0e4a5e3c96354db949f859
     <div class="card my-3">
         <h4 class="card-header bg-orange text-center">Liste des achats</h4>
         <main class="card-body">
@@ -12,31 +17,53 @@
                 <h5 class="card-header bg-light text-center">Alimentation</h5>
                 <div class="card-body">
             <ul class="list-unstyled">
-                <li>This is a list.</li>
-                <li>It appears completely unstyled.</li>
-                <li>Structurally, it's still a list.</li>
-                <li>However, this style only applies to immediate child elements.</li>
-            </ul>
-            <div class="d-flex justify-content-end mx-auto">
-            <a href="#" class="btn btn-outline-success" type="submit">Ajouter</a>
+                <form action="" method="post" id="food" name="food">
+                    <div class="form-group my-5">
+                        <ul>
+                            <li class="list-group-item border-0"><label class="mb-1" for="food">Aliment: </label><input class="form-control" type="text" name="food" id="food" required> </li>
+                            <li class="list-group-item border-0 text-center"><input class="btn btn-outline-success" type="submit" id="add" name="add" value="Ajouter"></li>
+                        </ul>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
 
-            <div class="card">
-                <h5 class="card-header bg-light text-center">Boisson</h5>
-                <div class="card-body">
-            <ul class="list-unstyled">
-                <li>This is a list.</li>
-                <li>It appears completely unstyled.</li>
-                <li>Structurally, it's still a list.</li>
-                <li>However, this style only applies to immediate child elements.</li>
+ {% for food in foods %}
+            <ul class = "list-group">
+                <li class="list-group-item border-0">
+                    <div>
+                        {{ food.item }}
+                    </div>
+                </li>
             </ul>
-            <div class="d-flex justify-content-end mx-auto">
-                <a href="#" class="btn btn-outline-success" type="submit">Ajouter</a>
+ {% endfor %}
+
+        <div class="card my-3">
+                    <h5 class="card-header bg-light text-center">Boisson</h5>
+                    <div class="card-body">
+                        <ul class="list-unstyled">
+                            <form action="" method="post" id="alcool" name="alcool">
+                                <div class="form-group my-5">
+                                    <ul>
+                                        <li class="list-group-item border-0"><label class="mb-1" for="alcool">Boisson: </label><input class="form-control" type="text" name="alcool" id="alcool" required> </li>
+                                        <li class="list-group-item border-0 text-center"><input class="btn btn-outline-success" type="submit" id="add" name="add" value="Ajouter"></li>
+                                    </ul>
+                                </div>
+                            </form>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
+
+            {% for alcool in alcools %}
+                <ul class = "list-group">
+                    <li class="list-group-item border-0">
+                        <div>
+                            {{ alcool.item }}
+                        </div>
+                    </li>
+                </ul>
+            {% endfor %}
 
             <div class="card">
                 <h5 class="card-header bg-light text-center">Divers</h5>
