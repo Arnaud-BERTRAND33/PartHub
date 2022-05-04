@@ -41,8 +41,10 @@ class PartyController extends AbstractController
             if (!$errors) {
                 $uniqueName = uniqid('', true);
                 $file = $uniqueName . "." . $extension;
+
                 move_uploaded_file($tmpName, __DIR__ . '/../public/uploads' . $file);
                 $party = array_map('trim', $_POST);
+
                 $dateCreation = date('Y-m-d');
 
                 $party['user_id'] = $this->user['id'];
@@ -52,7 +54,7 @@ class PartyController extends AbstractController
                 $partyId = $partyadd->insert($party);
 
                 // inscription du user connecté à sa soirée
-                header('Location:/party/dashboard?party_id='. $partyId);
+                header('Location:/party/dashboard?party_id=' . $partyId);
                 return '';
             }
         }

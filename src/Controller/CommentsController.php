@@ -34,7 +34,6 @@ class CommentsController extends AbstractController
                 'error' => $error,
                 'comments' => $comments,
             ]);
-
         }
         return $this->twig->render('Comments/comments.html.twig', [
             'comments' => $comments,
