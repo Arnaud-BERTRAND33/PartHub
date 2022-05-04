@@ -3,7 +3,9 @@
 namespace App\Controller;
 
 use App\Error\LoginRequiredException;
+use App\Model\AlcoolManager;
 use App\Model\CommentsManager;
+use App\Model\FoodManager;
 use App\Model\PartyManager;
 use App\Model\UserManager;
 
@@ -29,11 +31,19 @@ class PartyDashboardController extends AbstractController
         $commentManager = new CommentsManager();
         $comments = $commentManager->selectByPartyId($partyId);
 
+        $alcoolManager = new  AlcoolManager();
+        $alcools = $alcoolManager->selectAllByPartyId($partyId);
+
+        $foodManager = new  FoodManager();
+        $foods = $foodManager->selectAllByPartyId($partyId);
+
         return $this->twig->render('PartyDashboard/partyDashboard.html.twig', [
             'party_id' => $partyId,
             'party' => $party,
             'totalUsers' => $totalUsers,
             'comments' => $comments,
+            'alcools' => $alcools,
+            'foods' => $foods,
         ]);
     }
 }
