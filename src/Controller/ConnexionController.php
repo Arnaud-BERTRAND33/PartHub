@@ -65,9 +65,11 @@ class ConnexionController extends AbstractController
                 $userArray = array_map('trim', $_POST);
                 $userArray['password'] = $hash;
                 $userManager = new userManager();
-                $userManager->insert($userArray);
-                header('Location:/dashboard');
-                return '';
+                $userId = $userManager->insert($userArray);
+
+                $_SESSION['user_id'] = $userId;
+
+                header('Location: /dashboard');
             }
         }
 

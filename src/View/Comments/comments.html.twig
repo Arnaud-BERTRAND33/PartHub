@@ -1,10 +1,9 @@
 {% extends 'layout.html.twig' %}
 
-{% block title %}{{ parent () }} - Commentaires{% endblock %}
+{% block title %} Commentaires - {{ parent () }}{% endblock %}
 
 {% block content %}
-    <h4 class="card-header bg-orange text-center mb-3">Espace commentaires</h4>
-
+    <h4 class="card-header bg-orange text-center my-3">Espace commentaires</h4>
 
     {% for comment in comments %}
 <ul class = "list-group">

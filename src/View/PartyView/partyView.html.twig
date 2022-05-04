@@ -1,5 +1,32 @@
 {% extends 'layout.html.twig' %}
 
-{% block content %}
+{% block title %}PartHub - View Party{% endblock %}
 
+{% block content %}
+        <div class="card mt-4 col-lg-12">
+            <h5 class="bg-orange text-center rounded">Informations soirée</h5>
+            <div class="card mb-3">
+                <img src="/uploads/{{ party.picture }}" class="bg-image" style="background-size: cover; height: 15em">
+                <div class="card-body">
+                    <h5 class="card-title">{{ party.title }}</h5>
+                    <h6>Thème : {{ party.theme }}</h6>
+                    <h6>Date : {{ party.date }}</h6>
+                    <h6>Adresse : {{ party.address }} {{ party.zip }} {{ party.city }}</h6>
+                    <p class="card-text">{{ party.description }}</p>
+                    <p class="card-text"><small class="text-muted">Date de création : {{ party.creation_date }}</small></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card mt-4 col-lg-12">
+            <h5 class="bg-orange text-center rounded">Playlist</h5>
+            <div class="card-body">
+                    <img src="/assets/images/spotify.png" class="img-fluid text-center" alt="Responsive image" width="10%"> <a>{{ party.playlist_url }}</a>
+                    {% if party.user_id == user.id  %}
+                        <div class="d-flex justify-content-end">
+                            <a class="btn btn-outline-success" role="button" href="/party/dashboard?party_id={{ party.id }}">Modifier soirée</a>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
 {% endblock %}
