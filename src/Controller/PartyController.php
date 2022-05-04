@@ -52,12 +52,12 @@ class PartyController extends AbstractController
                 $partyId = $partyadd->insert($party);
 
                 // inscription du user connecté à sa soirée
-                header('Location:/party/dashboard?party_id='. $partyId);
+                header('Location:/party/dashboard?party_id=' . $partyId);
                 return '';
             }
         }
         return $this->twig->render('PartyAdd/partyAdd.html.twig', [
             'errors' => $errors,
-            ]);
+        ]);
     }
 }

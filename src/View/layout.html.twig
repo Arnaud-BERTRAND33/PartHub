@@ -55,18 +55,21 @@
         <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block vh-100 text-white bg-blue sidebar collapse position-fixed">
             <div class="position-sticky pt-3">
                 {% if party_id is defined %}
-
                     <ul class="nav nav-pills flex-column mb-auto">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="/dashboard"> <i class="bi bi-speedometer2"></i><span class="ms-2">Dashboard</span></a>
-                        </li>
-                        <li> <a href="/party/dashboard?party_id={{ party_id }}" class="nav-link text-white"> <i class="bi bi-cup-straw"></i><span class="ms-2">Soirée</span> </a> </li>
-                        <li> <a href="/party/shopping-list?party_id={{ party_id }}" class="nav-link text-white"> <i class="bi bi-cart2"></i><span class="ms-2">Liste des achats</span> </a> </li>
-                        <li> <a href="/party/budget?party_id={{ party_id }}" class="nav-link text-white"> <i class="bi bi-currency-euro"></i><span class="ms-2">Budget</span> </a> </li>
-                        <li> <a href="/party/guests?party_id={{ party_id }}" class="nav-link text-white"> <i class="bi bi-people-fill"></i><span class="ms-2">Participants</span> </a> </li>
-                        <li> <a href="/party/comments?party_id={{ party_id }}" class="nav-link text-white"> <i class="bi bi-chat"></i><span class="ms-2">Commentaires</span> </a> </li>
+                        <li class="nav-item"> <a href="/dashboard" class="nav-link text-white"> <i class="bi bi-card-checklist"></i><span class="ms-2">Tous les événements</span> </a> </li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="/dashboard"> <i class="bi bi-speedometer2"></i><span class="ms-2">Dashboard</span></a></li>
+                        <li class="nav-item"> <a href="/party/dashboard?party_id={{ party_id }}" class="nav-link text-white"> <i class="bi bi-cup-straw"></i><span class="ms-2">Soirée</span> </a> </li>
+                        <li class="nav-item"> <a href="/party/shopping-list?party_id={{ party_id }}" class="nav-link text-white"> <i class="bi bi-cart2"></i><span class="ms-2">Liste des achats</span> </a> </li>
+                        <li class="nav-item"> <a href="/party/budget?party_id={{ party_id }}" class="nav-link text-white"> <i class="bi bi-currency-euro"></i><span class="ms-2">Budget</span> </a> </li>
+                        <li class="nav-item"> <a href="/party/guests?party_id={{ party_id }}" class="nav-link text-white"> <i class="bi bi-people-fill"></i><span class="ms-2">Participants</span> </a> </li>
+                        <li class="nav-item"> <a href="/party/comments?party_id={{ party_id }}" class="nav-link text-white"> <i class="bi bi-chat"></i><span class="ms-2">Commentaires</span> </a> </li>
                     </ul>
-                {% endif %}
+                    {% else %}
+                <ul class="nav nav-pills flex-column mb-auto">
+                    <li class="nav-item"> <a href="/dashboard" class="nav-link text-white"> <i class="bi bi-card-checklist"></i><span class="ms-2">Tous les événements</span> </a> </li>
+                    <li class="nav-item"> <a href="/party/add" class="nav-link text-white"> <i class="bi bi-file-earmark-plus"></i><span class="ms-2">Ajouter un événement</span> </a> </li>
+                </ul>
+                    {% endif %}
             </div>
         </nav>
     </div>
