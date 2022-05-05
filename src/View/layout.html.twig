@@ -18,7 +18,6 @@
 </head>
 
 <body>
-
 <header class="bg-blue sticky-top flex-md-nowrap p-0b align-items-center py-2">
     <div class="container-fluid d-flex align-items-center justify-content-between">
         <div class="navbar-dark d-md-none">
@@ -76,6 +75,12 @@
 </div>
 
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+
+            {% if message_flash %}
+                <div class="alert alert-{{ message_flash.type }}" role="alert">
+                    {{ message_flash.message }}
+                </div>
+            {% endif %}
 
             {% block content %}
 
