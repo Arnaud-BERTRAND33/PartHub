@@ -40,21 +40,17 @@ class GuestsController extends AbstractController
                 return '';
             }
 
+            return $this->twig->render('Guests/guests.html.twig', [
+                "guests" => $guests,
+                'party_id' => $partyId,
+                'error' => $error,
+            ]);
+        }
+
         return $this->twig->render('Guests/guests.html.twig', [
             "guests" => $guests,
             'party_id' => $partyId,
-            'error' => $error,
         ]);
-
-    }
-
-        return $this->twig->render('Guests/guests.html.twig', [
-            "guests" => $guests,
-            'party_id' => $partyId,
-        ]);
-
-
     }
 }
 //if $post value sendMail  (envoi mail)
-

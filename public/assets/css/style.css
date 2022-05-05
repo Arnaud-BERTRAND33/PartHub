@@ -30,9 +30,25 @@ body {
     background-color: var(--primaryColor);
 }
 .bg-orange {
-    background-color: var(--primaryColor);
+    background-color: var(--thirdColor);
 }
 
+<<<<<<< HEAD
 .bg-orange{
     background-color: var(--primaryColor);
 }
+=======
+.uk-countdown-number {
+    font-size: 3rem;
+    font-weight: bold
+}
+
+.uk-countdown-separator {
+    font-size: 3rem;
+}
+
+#sidebarMenu {
+    z-index: 10;
+}
+
+>>>>>>> 99f07c410518142ea11949698a87a3d1ef5068f0

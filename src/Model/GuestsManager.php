@@ -18,7 +18,7 @@ class GuestsManager extends AbstractManager
 //insertion si participe, peut-être, ou pas
     public function insertGuests(array $participate): void
     {
-        $statement = $this->pdo->prepare("UPDATE " . SELF::TABLE . " SET `participate`=:participate
+        $statement = $this->pdo->prepare("UPDATE " . self::TABLE . " SET `participate`=:participate
         WHERE `user_id`=:user_id AND `party_id`=:party_id");
 
         $statement->bindValue('user_id', $participate['user_id']);
