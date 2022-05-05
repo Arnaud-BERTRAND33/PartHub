@@ -35,6 +35,6 @@ abstract class AbstractController
         $this->twig->addGlobal('user', $this->user);
 
         // add global du bout d'url
-        $this->twig->addGlobal('current_uri', $_SERVER['PATH_INFO']);
+        $this->twig->addGlobal('current_uri', $_SERVER['PATH_INFO'] ?? null);
     }
 }
