@@ -11,7 +11,9 @@
 
 {% block content %}
 
-    <div class="uk-height-small uk-flex uk-flex-center uk-flex-middle uk-background-cover uk-light uk-margin-small" data-src="/uploads/{{ party.picture }}" uk-img>
+    <div class="js-container">
+
+    <div class="uk-height-small uk-flex uk-flex-center uk-flex-middle uk-background-cover uk-light uk-margin-small" data-src="/assets/images/3.jpg" uk-img>
         <h1 class="display-4 fst-italic" style="font-weight: bold; -webkit-text-stroke: 1px black">{{ party.title }}</h1>
     </div>
 
@@ -131,6 +133,8 @@
         <small class="d-block text-end mt-3">
             <a href="/party/comments?party_id={{ party_id }}">Voir tous les commentaires</a>
         </small>
+    </div>
+
     </div>
 
 {% endblock %}
