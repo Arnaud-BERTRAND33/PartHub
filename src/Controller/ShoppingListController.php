@@ -74,6 +74,7 @@ class ShoppingListController extends AbstractController
             //'error' => $error,
             'foods' => $foods,
             'alcools' => $alcools,
+            'party_id' => $partyId,
         ]);
     }
 }
