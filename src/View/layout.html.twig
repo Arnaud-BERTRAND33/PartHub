@@ -18,7 +18,6 @@
 </head>
 
 <body>
-
 <header class="bg-blue sticky-top flex-md-nowrap p-0b align-items-center py-2">
     <div class="container-fluid d-flex align-items-center justify-content-between">
         <div class="navbar-dark d-md-none">
@@ -52,19 +51,20 @@
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="row">
-        <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block vh-100 text-white bg-blue sidebar collapse position-fixed">
+        <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block text-white bg-blue sidebar collapse position-fixed vh-100">
             <div class="position-sticky pt-3">
                 {% if party_id is defined %}
-
                     <ul class="nav nav-pills flex-column mb-auto">
                         <li class="nav-item"> <a href="/dashboard" class="nav-link text-white {% if current_uri starts with '/dashboard' %}active{% endif %}"> <i class="bi bi-card-checklist "></i><span class="ms-2">Tous les évènements</span> </a> </li>
                         <li class="nav-item"> <a class="nav-link text-white {% if current_uri starts with '/party/dashboard' %}active{% endif %} " aria-current="page" href="/party/dashboard?party_id={{ party_id }}"> <i class="bi bi-speedometer2"></i><span class="ms-2">Dashboard</span></a> </li>
-                        <li class="nav-item"> <a href="party/view?party_id={{ party_id }}" class="nav-link text-white {% if current_uri starts with 'party/view' %}active{% endif %}"> <i class="bi bi-cup-straw"></i><span class="ms-2">Soirée</span> </a> </li>
+                        <li class="nav-item"> <a href="/party/view?party_id={{ party_id }}" class="nav-link text-white {% if current_uri starts with 'party/view' %}active{% endif %}"> <i class="bi bi-cup-straw"></i><span class="ms-2">Soirée</span> </a> </li>
                         <li class="nav-item"> <a href="/party/shopping-list?party_id={{ party_id }}" class="nav-link text-white {% if current_uri starts with '/party/shopping-list' %}active{% endif %} "> <i class="bi bi-cart2"></i><span class="ms-2">Liste des achats</span> </a> </li>
                         <li class="nav-item"> <a href="/party/budget?party_id={{ party_id }}" class="nav-link text-white {% if current_uri starts with '/party/budget' %}active{% endif %}"> <i class="bi bi-currency-euro"></i><span class="ms-2">Budget</span> </a> </li>
                         <li class="nav-item"> <a href="/party/guests?party_id={{ party_id }}" class="nav-link text-white {% if current_uri starts with '/party/guests' %}active{% endif %}"> <i class="bi bi-people-fill"></i><span class="ms-2">Participants</span> </a> </li>
                         <li class="nav-item"> <a href="/party/comments?party_id={{ party_id }}" class="nav-link text-white {% if current_uri starts with '/party/comments' %}active{% endif %}"> <i class="bi bi-chat"></i><span class="ms-2">Commentaires</span> </a> </li>
                     </ul>
+
+                    
                 {% else %}
                     <ul class="nav nav-pills flex-column mb-auto">
                         <li class="nav-item"> <a href="/dashboard" class="nav-link text-white {% if current_uri starts with '/dashboard' %}active{% endif %}"> <i class="bi bi-card-checklist"></i><span class="ms-2">Tous les événements</span> </a> </li>
@@ -73,10 +73,15 @@
                 {% endif %}
             </div>
         </nav>
-    </div>
-</div>
+
 
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+
+            {% if message_flash %}
+                <div class="alert alert-{{ message_flash.type }}" role="alert">
+                    {{ message_flash.message }}
+                </div>
+            {% endif %}
 
             {% block content %}
 
@@ -84,19 +89,21 @@
             {% endblock %}
 
         </main>
+    </div>
+</div>
 
 
 <footer class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-    <ul class="nav justify-content-center align-items-center border-bottom pb-3 mb-3">
-        <li class="nav-item"><a href="#" class="nav-foot px-2 text-muted text-decoration-none">Home</a></li>
-        <li class="nav-item"><a href="#" class="nav-foot px-2 text-muted text-decoration-none">Contact</a></li>
+    <ul class="nav justify-content-center align-items-center border-bottom pb-3">
+        <li class="nav-item"><a href="/dashboard" class="nav-foot px-2 text-muted text-decoration-none">Home</a></li>
+        <li class="nav-item"><a href="/contact" class="nav-foot px-2 text-muted text-decoration-none">Contact</a></li>
         <li class="nav-item"><a href="#" class="nav-foot px-2 text-muted text-decoration-none">FAQ</a></li>
         <li class="nav-item"><a href="#" class="nav-foot px-2 text-muted text-decoration-none">About</a></li>
         <li class="ms-3"><a class="text-muted" href="#"><i class="bi bi-twitter"></i></a></li>
         <li class="ms-3"><a class="text-muted" href="#"><i class="bi bi-instagram"></i></a></li>
         <li class="ms-3"><a class="text-muted" href="#"><i class="bi bi-facebook"></i></a></li>
     </ul>
-    <p class="text-center text-muted">© 2022 Parthub, Inc</p>
+    <p class="text-center text-muted mb-0">© 2022 Parthub, Inc</p>
 </footer>
 
 {% block js %}
