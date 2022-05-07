@@ -20,7 +20,6 @@
 </head>
 
 <body>
-
 <header class="bg-blue sticky-top flex-md-nowrap p-0b align-items-center py-2">
     <div class="container-fluid d-flex align-items-center justify-content-between">
         <div class="navbar-dark d-md-none">
@@ -63,6 +62,7 @@
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="row">
+        <<<<<<< HEAD
         <nav id="sidebarMenu"
              class="col-md-3 col-lg-2 d-md-block vh-100 text-white bg-blue sidebar collapse position-fixed">
             <div class="position-sticky pt-3">
@@ -92,6 +92,8 @@
                                                 class="nav-link text-white {% if current_uri starts with '/party/comments' %}active{% endif %}">
                                 <i class="bi bi-chat"></i><span class="ms-2">Commentaires</span> </a></li>
                     </ul>
+
+
                 {% else %}
                     <ul class="nav nav-pills flex-column mb-auto">
                         <li class="nav-item"><a href="/dashboard"
@@ -106,30 +108,33 @@
                 {% endif %}
             </div>
         </nav>
+
+
+        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+
+            {% block content %}
+                {% if message_flash %}
+                    <div class="alert alert-{{ message_flash.type }}" role="alert">
+                        {{ message_flash.message }}
+                    </div>
+                {% endif %}
+            {% endblock %}
+
+        </main>
     </div>
 </div>
 
-<main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-
-    {% block content %}
-
-
-    {% endblock %}
-
-</main>
-
-
 <footer class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-    <ul class="nav justify-content-center align-items-center border-bottom pb-3 mb-3">
-        <li class="nav-item"><a href="#" class="nav-foot px-2 text-muted text-decoration-none">Home</a></li>
-        <li class="nav-item"><a href="#" class="nav-foot px-2 text-muted text-decoration-none">Contact</a></li>
+    <ul class="nav justify-content-center align-items-center border-bottom pb-3">
+        <li class="nav-item"><a href="/dashboard" class="nav-foot px-2 text-muted text-decoration-none">Home</a></li>
+        <li class="nav-item"><a href="/contact" class="nav-foot px-2 text-muted text-decoration-none">Contact</a></li>
         <li class="nav-item"><a href="#" class="nav-foot px-2 text-muted text-decoration-none">FAQ</a></li>
         <li class="nav-item"><a href="#" class="nav-foot px-2 text-muted text-decoration-none">About</a></li>
         <li class="ms-3"><a class="text-muted" href="#"><i class="bi bi-twitter"></i></a></li>
         <li class="ms-3"><a class="text-muted" href="#"><i class="bi bi-instagram"></i></a></li>
         <li class="ms-3"><a class="text-muted" href="#"><i class="bi bi-facebook"></i></a></li>
     </ul>
-    <p class="text-center text-muted">© 2022 Parthub, Inc</p>
+    <p class="text-center text-muted mb-0">© 2022 Parthub, Inc</p>
 </footer>
 
 {% block js %}

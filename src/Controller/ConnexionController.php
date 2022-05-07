@@ -14,6 +14,9 @@ class ConnexionController extends AbstractController
             $user = $connexionManager->selectOneByEmail($credentials['email']);
             if ($user && password_verify($credentials['password'], $user['password'])) {
                 $_SESSION['user_id'] = $user['id'];
+
+                $this->addSuccessMessage('Recoucou ' . $user['firstname']);
+
                 header('Location:/dashboard');
                 return null;
             } else {

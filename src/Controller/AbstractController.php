@@ -36,5 +36,24 @@ abstract class AbstractController
 
         // add global du bout d'url
         $this->twig->addGlobal('current_uri', $_SERVER['PATH_INFO'] ?? null);
+
+        $this->twig->addGlobal('message_flash', $_SESSION['message'] ?? null);
+        unset($_SESSION['message']);
+    }
+
+    protected function addSuccessMessage(string $message): void
+    {
+        $_SESSION['message'] = [
+            'type' => 'success',
+            'message' => $message,
+        ];
+    }
+
+    protected function addErrorMessage(string $message): void
+    {
+        $_SESSION['message'] = [
+            'type' => 'danger',
+            'message' => $message,
+        ];
     }
 }
