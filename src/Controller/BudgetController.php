@@ -14,7 +14,6 @@ class BudgetController extends AbstractController
             throw new LoginRequiredException();
         }
     }
-
     public function budget($partyId): string
     {
         return $this->twig->render('Budget/budget.html.twig', [

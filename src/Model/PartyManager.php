@@ -29,6 +29,7 @@ class PartyManager extends AbstractManager
 
         return (int)$this->pdo->lastInsertId();
     }
+
     public function selectAllParty(int $userId): ?array
     {
         $statement = $this->pdo->prepare("SELECT * FROM " . static::TABLE . " WHERE user_id=:user_id");
@@ -36,5 +37,11 @@ class PartyManager extends AbstractManager
         $statement->execute();
 
         return $statement->fetchAll() ?: null;
+    }
+
+    public function deleteParty(int $partyId): void
+    {
+        $statement = $this->pdo->prepare("DELETE FROM party WHERE party.id = $partyId");
+        $statement->execute();
     }
 }
