@@ -27,4 +27,10 @@ class GuestsManager extends AbstractManager
 
         $statement->execute();
     }
+
+    public function participateGuests(int $partyId): array
+    {
+        $query = "SELECT * FROM `user_has_party` WHERE party_id=$partyId AND participate='participe'";
+        return $this->pdo->query($query)->fetchAll();
+    }
 }
