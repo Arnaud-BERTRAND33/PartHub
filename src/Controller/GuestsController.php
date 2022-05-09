@@ -33,9 +33,7 @@ class GuestsController extends AbstractController
 
                 $participate['party_id'] = $_GET['party_id'];
                 $participate['user_id'] = $_POST['user_id'];
-
-                $participateManager = new GuestsManager();
-                $participateManager->insertGuests($participate);
+                $guestManager->insertGuests($participate);
                 header('Location: /party/guests?party_id=' . $partyId);
                 return '';
             }
