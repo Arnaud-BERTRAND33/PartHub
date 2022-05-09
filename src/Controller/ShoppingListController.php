@@ -18,6 +18,7 @@ class ShoppingListController extends AbstractController
         }
     }
 
+
     public function shoppingList(int $partyId)
     {
         $shoppingManager = new FoodManager();
