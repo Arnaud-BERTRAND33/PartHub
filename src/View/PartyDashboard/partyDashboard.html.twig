@@ -11,11 +11,8 @@
 
 
 {% block content %}
-
-    <div class="js-container">
-
-    <div class="uk-height-small uk-flex uk-flex-center uk-flex-middle uk-background-cover uk-light uk-margin-small"
-         data-src="/uploads/{{ party.picture }}" uk-img>
+        <div class="uk-height-small uk-flex uk-flex-center uk-flex-middle uk-background-cover uk-light uk-margin-small"
+         data-src="/uploads/{{ party.picture }}" uk-img style = "width:100%; height: 10rem">
         <h1 class="display-4 fst-italic"
             style="font-weight: bold; -webkit-text-stroke: 1px black">{{ party.title }}</h1>
     </div>
@@ -152,6 +149,25 @@
 {% endblock %}
 
 {% block js %}
+    <script src="confetti.js"></script>
+    <script>
+
+        const start = () => {
+            setTimeout(function() {
+                confetti.start()
+            }, 1000);
+        };
+
+
+        const stop = () => {
+            setTimeout(function() {
+                confetti.stop()
+            }, 5000);
+        };
+
+        start();
+        stop();
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script type="text/javascript" src="/assets/script/script.js"></script>
     <script>
