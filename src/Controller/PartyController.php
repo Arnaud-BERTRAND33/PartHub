@@ -141,5 +141,11 @@ class PartyController extends AbstractController
             'errors' => $errors,
             'party' => $party,
         ]);
+
+  public function delete(int $partyId): void
+    {
+        $partyManager = new PartyManager();
+        $partyManager->deleteParty($partyId);
+        header('Location: /dashboard');
     }
 }
