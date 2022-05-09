@@ -20,7 +20,6 @@ class ShoppingListController extends AbstractController
 
 
     public function shoppingList(int $partyId)
-
     {
         $shoppingManager = new FoodManager();
         $foods = $shoppingManager->getFoods($partyId);
