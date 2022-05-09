@@ -12,10 +12,10 @@ class CommentsManager extends AbstractManager
             " (`comment`, `date`, `user_id`, `party_id`)
             VALUES (:comment, NOW(), :user_id, :party_id)");
 
-            $statement->bindValue('comment', $comment['comment']);
-            $statement->bindValue('user_id', $comment['user_id']);
-            $statement->bindValue('party_id', $comment['party_id']);
-            $statement->execute();
+        $statement->bindValue('comment', $comment['comment']);
+        $statement->bindValue('user_id', $comment['user_id']);
+        $statement->bindValue('party_id', $comment['party_id']);
+        $statement->execute();
     }
 
     public function selectByPartyId($partyId): array

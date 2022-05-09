@@ -26,6 +26,7 @@ class PartyManager extends AbstractManager
         $statement->bindValue('creation_date', $party['creation_date']);
 
         $statement->execute();
+
         return (int)$this->pdo->lastInsertId();
     }
 
