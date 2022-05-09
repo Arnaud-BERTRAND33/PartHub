@@ -140,9 +140,11 @@ class PartyController extends AbstractController
         return $this->twig->render('PartyUpdate/partyUpdate.html.twig', [
             'errors' => $errors,
             'party' => $party,
+            'party_id' => $partyId,
         ]);
+    }
 
-  public function delete(int $partyId): void
+    public function delete(int $partyId): void
     {
         $partyManager = new PartyManager();
         $partyManager->deleteParty($partyId);

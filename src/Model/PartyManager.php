@@ -63,6 +63,7 @@ class PartyManager extends AbstractManager
         $statement->bindValue('playlist_url', $party['playlist_url']);
 
         return $statement->execute();
+    }
 
     public function deleteParty(int $partyId): void
     {
