@@ -51,7 +51,7 @@ class PartyController extends AbstractController
                     move_uploaded_file($file, '../uploads/');
                 }
 
-                $date = new \DateTime();
+                $date = new DateTime();
                 $dateCreation = $date->format('Y-m-d-H-i-s');
                 $party['date'] = $_POST['date'] . " " . $_POST['time'];
                 $party['user_id'] = $this->user['id'];
@@ -123,7 +123,7 @@ class PartyController extends AbstractController
                     move_uploaded_file($file, '../uploads/');
                 }
 
-                $date = new \DateTime();
+                $date = new DateTime();
                 $dateCreation = $date->format('Y-m-d-H-i-s');
                 $party['date'] = $_POST['date'] . " " . $_POST['time'];
                 $party['user_id'] = $this->user['id'];
