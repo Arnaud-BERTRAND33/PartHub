@@ -8,38 +8,44 @@
     <title>{% block title %}Parthub{% endblock %}</title>
 
     {% block stylesheets %}
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="/assets/css/style.css">
-
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.14.1/dist/css/uikit.min.css"/>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+              integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+        <link rel="stylesheet" href="/assets/css/style.css">
     {% endblock %}
 
 </head>
 
 <body>
-
 <header class="bg-blue sticky-top flex-md-nowrap p-0b align-items-center py-2">
     <div class="container-fluid d-flex align-items-center justify-content-between">
         <div class="navbar-dark d-md-none">
-            <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggler navigation">
+            <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false"
+                    aria-label="Toggler navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
         </div>
 
-        <a class="navbar-brand col-md-3 col-lg-2 col-sm-3 col-xs-2 me-0" href="/dashboard"><img src="/assets/images/logo.png" class="img-fluid" alt="parthub" style="max-width: 130px"></a>
+        <a class="navbar-brand col-md-3 col-lg-2 col-sm-3 col-xs-2 me-0" href="/dashboard"><img
+                src="/assets/images/logo.png" class="img-fluid" alt="parthub" style="max-width: 130px"></a>
 
         <div class="d-flex align-items-center justify-content-end">
 
             <div class="flex-shrink-0 dropdown">
-                <a href="#" class="d-block text-decoration-none dropdown-toggle link-light" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
-                    <img src="/uploads/{{ user.picture }}" alt="Avatar" width="32" height="32" class="rounded-circle"> {{ user.firstname}}
+                <a href="#" class="d-block text-decoration-none dropdown-toggle link-light" id="dropdownUser2"
+                   data-bs-toggle="dropdown" aria-expanded="false">
+                    <img src="/uploads/{{ user.picture }}" alt="Avatar" width="32" height="32"
+                         class="rounded-circle"> {{ user.firstname }}
                 </a>
                 <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2" style="">
                     <li><a class="dropdown-item" href="/party/add">Nouvelle soirée...</a></li>
                     <li><a class="dropdown-item" href="#">Settings</a></li>
                     <li><a class="dropdown-item" href="#">Profile</a></li>
-                    <li><hr class="dropdown-divider"></li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
                     <li><a class="dropdown-item" href="/logout">Déconnexion</a></li>
                 </ul>
             </div>
@@ -48,65 +54,111 @@
 </header>
 
 <div class="container-fluid">
-    <button class="navbar-toggler d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggler navigation">
+    <button class="navbar-toggler d-md-none collapsed" type="button" data-bs-toggle="collapse"
+            data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false"
+            aria-label="Toggler navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="row">
-        <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block vh-100 text-white bg-blue sidebar collapse position-fixed">
+        <nav id="sidebarMenu"
+             class="col-md-3 col-lg-2 d-md-block vh-100 text-white bg-blue sidebar collapse position-fixed">
             <div class="position-sticky pt-3">
                 {% if party_id is defined %}
-
                     <ul class="nav nav-pills flex-column mb-auto">
-                        <li class="nav-item"> <a href="/dashboard" class="nav-link text-white {% if current_uri starts with '/dashboard' %}active{% endif %}"> <i class="bi bi-card-checklist "></i><span class="ms-2">Tous les évènements</span> </a> </li>
-                        <li class="nav-item"> <a class="nav-link text-white {% if current_uri starts with '/party/dashboard' %}active{% endif %} " aria-current="page" href="/party/dashboard?party_id={{ party_id }}"> <i class="bi bi-speedometer2"></i><span class="ms-2">Dashboard</span></a> </li>
-                        <li class="nav-item"> <a href="party/view?party_id={{ party_id }}" class="nav-link text-white {% if current_uri starts with 'party/view' %}active{% endif %}"> <i class="bi bi-cup-straw"></i><span class="ms-2">Soirée</span> </a> </li>
-                        <li class="nav-item"> <a href="/party/shopping-list?party_id={{ party_id }}" class="nav-link text-white {% if current_uri starts with '/party/shopping-list' %}active{% endif %} "> <i class="bi bi-cart2"></i><span class="ms-2">Liste des achats</span> </a> </li>
-                        <li class="nav-item"> <a href="/party/budget?party_id={{ party_id }}" class="nav-link text-white {% if current_uri starts with '/party/budget' %}active{% endif %}"> <i class="bi bi-currency-euro"></i><span class="ms-2">Budget</span> </a> </li>
-                        <li class="nav-item"> <a href="/party/guests?party_id={{ party_id }}" class="nav-link text-white {% if current_uri starts with '/party/guests' %}active{% endif %}"> <i class="bi bi-people-fill"></i><span class="ms-2">Participants</span> </a> </li>
-                        <li class="nav-item"> <a href="/party/comments?party_id={{ party_id }}" class="nav-link text-white {% if current_uri starts with '/party/comments' %}active{% endif %}"> <i class="bi bi-chat"></i><span class="ms-2">Commentaires</span> </a> </li>
+                        <li class="nav-item"><a href="/dashboard"
+                                                class="nav-link text-white {% if current_uri starts with '/dashboard' %}active{% endif %}">
+                                <i class="bi bi-card-checklist "></i><span class="ms-2">Tous les évènements</span> </a>
+                        </li>
+                        <li class="nav-item"><a
+                                class="nav-link text-white {% if current_uri starts with '/party/dashboard' %}active{% endif %} "
+                                aria-current="page" href="/party/dashboard?party_id={{ party_id }}"> <i
+                                    class="bi bi-speedometer2"></i><span class="ms-2">Dashboard</span></a></li>
+                        <li class="nav-item"><a href="/party/view?party_id={{ party_id }}"
+                                                class="nav-link text-white {% if current_uri starts with 'party/view' %}active{% endif %}">
+                                <i class="bi bi-cup-straw"></i><span class="ms-2">Soirée</span> </a></li>
+                        <li class="nav-item"><a href="/party/shopping-list?party_id={{ party_id }}"
+                                                class="nav-link text-white {% if current_uri starts with '/party/shopping-list' %}active{% endif %} ">
+                                <i class="bi bi-cart2"></i><span class="ms-2">Liste des achats</span> </a></li>
+                        <li class="nav-item"><a href="/party/budget?party_id={{ party_id }}"
+                                                class="nav-link text-white {% if current_uri starts with '/party/budget' %}active{% endif %}">
+                                <i class="bi bi-currency-euro"></i><span class="ms-2">Budget</span> </a></li>
+                        <li class="nav-item"><a href="/party/guests?party_id={{ party_id }}"
+                                                class="nav-link text-white {% if current_uri starts with '/party/guests' %}active{% endif %}">
+                                <i class="bi bi-people-fill"></i><span class="ms-2">Participants</span> </a></li>
+                        <li class="nav-item"><a href="/party/comments?party_id={{ party_id }}"
+                                                class="nav-link text-white {% if current_uri starts with '/party/comments' %}active{% endif %}">
+                                <i class="bi bi-chat"></i><span class="ms-2">Commentaires</span> </a></li>
                     </ul>
+
+
                 {% else %}
                     <ul class="nav nav-pills flex-column mb-auto">
-                        <li class="nav-item"> <a href="/dashboard" class="nav-link text-white {% if current_uri starts with '/dashboard' %}active{% endif %}"> <i class="bi bi-card-checklist"></i><span class="ms-2">Tous les événements</span> </a> </li>
-                        <li class="nav-item"> <a href="/party/add" class="nav-link text-white {% if current_uri starts with '/party/add' %}active{% endif %}"> <i class="bi bi-file-earmark-plus"></i><span class="ms-2">Ajouter un événement</span> </a> </li>
+                        <li class="nav-item"><a href="/dashboard"
+                                                class="nav-link text-white {% if current_uri starts with '/dashboard' %}active{% endif %}">
+                                <i class="bi bi-card-checklist"></i><span class="ms-2">Tous les événements</span> </a>
+                        </li>
+                        <li class="nav-item"><a href="/party/add"
+                                                class="nav-link text-white {% if current_uri starts with '/party/add' %}active{% endif %}">
+                                <i class="bi bi-file-earmark-plus"></i><span class="ms-2">Ajouter un événement</span>
+                            </a></li>
                     </ul>
                 {% endif %}
             </div>
         </nav>
-    </div>
-</div>
+
 
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
 
             {% block content %}
-
-
+                {% if message_flash %}
+                    <div class="alert alert-{{ message_flash.type }}" role="alert">
+                        {{ message_flash.message }}
+                    </div>
+                {% endif %}
             {% endblock %}
 
         </main>
+    </div>
+</div>
 
-
-<footer class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-    <ul class="nav justify-content-center align-items-center border-bottom pb-3 mb-3">
-        <li class="nav-item"><a href="#" class="nav-foot px-2 text-muted text-decoration-none">Home</a></li>
-        <li class="nav-item"><a href="#" class="nav-foot px-2 text-muted text-decoration-none">Contact</a></li>
+<footer class="col-md-9 ms-sm-auto col-lg-10" style="margin-top: 10rem">
+    <ul class="nav justify-content-center align-items-center border-bottom pb-3">
+        <li class="nav-item"><a href="/dashboard" class="nav-foot px-2 text-muted text-decoration-none">Home</a></li>
+        <li class="nav-item"><a href="/contact" class="nav-foot px-2 text-muted text-decoration-none">Contact</a></li>
         <li class="nav-item"><a href="#" class="nav-foot px-2 text-muted text-decoration-none">FAQ</a></li>
         <li class="nav-item"><a href="#" class="nav-foot px-2 text-muted text-decoration-none">About</a></li>
         <li class="ms-3"><a class="text-muted" href="#"><i class="bi bi-twitter"></i></a></li>
         <li class="ms-3"><a class="text-muted" href="#"><i class="bi bi-instagram"></i></a></li>
         <li class="ms-3"><a class="text-muted" href="#"><i class="bi bi-facebook"></i></a></li>
+        <li class="ms-3"><a class="text-muted" href="#"><i class="bi bi-rss"></i></a></li>
     </ul>
-    <p class="text-center text-muted">© 2022 Parthub, Inc</p>
+    <p class="text-center text-muted mb-0">© 2022 Parthub, Inc</p>
 </footer>
 
 {% block js %}
+<script src="https://cdn.jsdelivr.net/npm/uikit@3.14.1/dist/js/uikit.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/uikit@3.14.1/dist/js/uikit-icons.min.js"></script>
 <script src="/assets/script/script.js"></script>
-<script src="/docs/5.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+<script src="/docs/5.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
 
-<script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous"></script><script src="dashboard.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js"
+        integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"
+        integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha"
+        crossorigin="anonymous"></script>
+<script src="dashboard.js"></script>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"
+        integrity="sha512-QSkVNOCYLtj73J4hbmVoOV6KVZuMluZlioC+trLpewV8qMjsWqlIQvkn1KGX2StWvPMdWGBqim1xlC8krl1EKQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
 {% endblock %}
 </body>
 

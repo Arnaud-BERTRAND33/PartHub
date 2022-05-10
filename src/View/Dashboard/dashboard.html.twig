@@ -7,17 +7,19 @@
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 my-4">
         {% for party in partys %}
         <div class="col">
-            <div class="card shadow-sm">
-                <img src="/upload/{{ party.picture }}" width="100%" height="225">
+            <div class="card shadow-sm" style="width: 20rem; height: 30rem;">
+                <img src="/uploads/{{ party.picture }}" width="100%" style="max-height: 12rem">
                 <div class="card-body">
                     <p class="card-text">
-                    <h2>{{ party.name }}</h2>
+                    <h2>{{ party.title }}</h2>
                     <small class="d-block">{{ party.theme }}</small>
-                    <small class="d-block">Date: {{ party.date }}</small>
+                    <small class="d-block">Date: {{ party.date|date("d/m/Y") }}</small>
                     </p>
-                    <div class="d-flex justify-content-between align-items-center">
-                        <div>
-                            <a class="btn btn-secondary" role="button" href="/party/dashboard?party_id={{ party.id }}">Voir l'événemnt</a>
+                    <div class="d-flex justify-content-between align-item-center">
+                        <div class="btn-group position-absolute bottom-0 pb-3" role="group" aria-label="Basic outlined example">
+                            <a class="btn btn-outline-primary" role="button" href="/party/dashboard?party_id={{ party.id }}"><i class="bi bi-eye"> Voir</i></a>
+                            <a class="btn btn-outline-success" role="button" href="/party/update?party_id={{ party.id }}"><i class="bi bi-pencil"> Editer</i></a>
+                            <a class="btn btn-outline-danger" role="button" href="/party/delete?party_id={{ party.id }}"><i class="bi bi-trash3-fill"> Suppr.</i></a>
                         </div>
                     </div>
                 </div>

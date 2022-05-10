@@ -1,60 +1,92 @@
 {% extends 'publicLayout.html.twig' %}
 
 {% block title %}Bienvenue sur PartHub{% endblock %}
+
 {% block content %}
-
-
-<div class="d-flex align-items-center p-4">
-    <div class="col">
-<h1>PartHub</h1>
-        <p class="lh-base">PartHub est l'outil indispensable pour organiser vos soirées sans prise de tête!<br/>
-            Terminé la gestion fastidieuse à courir après les participants, qui achète quoi? Quel est le budget? Redonner 10 fois l'adresse... <br/>
-            Nous vous proposons une application regroupant ainsi tous les éléments indispensables pour gérer votre organisation.<br/>
-            Il vous est possible de créer un événement en choisissant un titre, thème, date, lieu. <br/>Lancer une invitation via la plateforme. Gérer vos courses, le budget.
-            Un espace commentaire est également disponible afin de pouvoir communiquer facilement sur votre soirée.
-        </p>
-</div>
-</div>
-
-<div class="d-flex align-items-center bg-orange p-4 ">
-    <div class="d-flex justify-content-center ms-auto p-2 bd-highlight">
-        <img src="/assets/images/carre_rss.jpg" alt="carre" style="max-width: 30%">
-    </div>
-    <div class="col">
-        <h1>Dashboard</h1>
-        <p class="lh-base">Afin de vous faciliter toujours plus la vie. PartHub met à votre disposition un Dashboard de vos soirées. <br/>
-            Cette fonctionnalité vous permet d'avoir une lecture rapide et simple de l'ensemble des informations qui concerne votre soirée : date,
-            nombre de participants, budget, adresse derniers commentaires;
-        </p>
-    </div>
-</div>
-
-<div class="d-flex align-items-center p-4 bg-black text-white">
-    <div class="col">
-        <h1>Budget</h1>
-        <p class="lh-base">
-            Parce que les bons comptes font les bons amis, PartHub possède son propre manager de budget. <br/>
-            La gestion du budget vous permet de déterminer un montant précis des différents éléments à acheter et vous donnera le récapitulatif financier. <br/>
-            Il vous est alors possible de partager précisement entre les participants les montants à payer. <br/>
-        </p>
-    </div>
-    <div class="d-flex justify-content-center ms-auto p-2 bd-highlight">
-        <img src="/assets/images/carre_rss.jpg" alt="carre" style="max-width: 30%">
-    </div>
-</div>
-
-    <div class="d-flex align-items-center bg-blue p-4 ">
-        <div class="d-flex justify-content-center ms-auto p-2 bd-highlight">
-            <img src="/assets/images/carre_rss.jpg" alt="carre" style="max-width: 30%">
+    <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="/assets/images/slide1.jpg" class="d-block w-100" alt="Slide 1">
+                <div class="carousel-caption d-none d-md-block">
+                    <h1>Une nouvelle façon d'organiser vos soirées</h1>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="/assets/images/slide2.jpg" class="d-block w-100" alt="Slide 2">
+                <div class="carousel-caption d-none d-md-block">
+                    <h1>L'outil indispensable pour organiser vos soirées sans prise de tête</h1>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="/assets/images/slide3.jpg" class="d-block w-100" alt="Slide 3">
+            </div>
+            <div class="carousel-item">
+                <img src="/assets/images/slide4.jpg" class="d-block w-100" alt="Slide 4">
+            </div>
+            <div class="carousel-item">
+                <img src="/assets/images/slide5.jpg" class="d-block w-100" alt="Slide 5">
+            </div>
         </div>
-        <div class="col text-white">
-            <h1>Shopping</h1>
-            <p class="lh-base">PartHub vous propose un gestionnaire de liste de course complet, mais intuitif. <br/>
-            Les différentes catégories peuvent être complétées avec l'élément et la quantité souhaité.<br/>
-                Vous pouvez également attribuer aux différents participants les différents éléments afin de répartir les achats.
+    </div>
 
-
+    <div class="d-flex align-items-center p-4">
+        <div class="col">
+            <h1>PartHub</h1>
+            <p class="lh-base">PartHub est l'outil indispensable pour organiser vos soirées sans prise de tête!<br/>
+                Terminé la gestion fastidieuse à courir après les participants, qui achète quoi? Quel est le budget?
+                Redonner 10 fois l'adresse... <br/>
+                Nous vous proposons une application regroupant ainsi tous les éléments indispensables pour gérer votre
+                organisation.<br/>
+                Il vous est possible de créer un événement en choisissant un titre, thème, date, lieu. <br/>Lancer une
+                invitation via la plateforme. Gérer vos courses, le budget.
+                Un espace commentaire est également disponible afin de pouvoir communiquer facilement sur votre soirée.
             </p>
         </div>
     </div>
+
+    <div class="d-flex align-items-center justify-content-around bg-orange p-5">
+            <img src="/assets/images/dashboard.png" alt="carre" style="max-width: 30%">
+        <div class="col px-5">
+            <h1>Dashboard</h1>
+            <p class="lh-base">Afin de vous faciliter toujours plus la vie. PartHub met à votre disposition un Dashboard
+                de vos soirées. <br/>
+                Cette fonctionnalité vous permet d'avoir une lecture rapide et simple de l'ensemble des informations qui
+                concerne votre soirée : date,
+                nombre de participants, budget, adresse derniers commentaires;
+            </p>
+        </div>
+    </div>
+
+    <div class="d-flex align-items-center p-4 bg-black text-white p-5">
+        <div class="col px-5">
+            <h1>Gestion budget et shopping</h1>
+            <p class="lh-base">
+                Parce que les bons comptes font les bons amis, PartHub possède son propre manager de budget. <br/>
+                La gestion du budget vous permet de déterminer un montant précis des différents éléments à acheter et
+                vous donnera le récapitulatif financier. <br/>
+                Il vous est alors possible de partager précisement entre les participants les montants à payer. <br/>
+                PartHub vous propose également un gestionnaire de liste de course complet, mais intuitif. <br/>
+                Les différentes catégories peuvent être complétées avec l'élément et la quantité souhaité.<br/>
+                Vous pouvez également attribuer aux différents participants les différents éléments afin de répartir les
+                achats.
+            </p>
+        </div>
+        <div class="d-flex justify-content-center ms-auto p-2 bd-highlight">
+            <img src="/assets/images/cochon.png" alt="carre" style="max-width: 90%">
+        </div>
+    </div>
+
+{#    <div class="d-flex align-items-center justify-content-around bg-blue p-5 ">#}
+{#            <img src="/assets/images/caddie.jpg" alt="carre" style="max-width: 25%">#}
+{#        <div class="col text-white px-5">#}
+{#            <h1>Shopping</h1>#}
+{#            <p class="lh-base">PartHub vous propose un gestionnaire de liste de course complet, mais intuitif. <br/>#}
+{#                Les différentes catégories peuvent être complétées avec l'élément et la quantité souhaité.<br/>#}
+{#                Vous pouvez également attribuer aux différents participants les différents éléments afin de répartir les#}
+{#                achats.#}
+
+
+{#            </p>#}
+{#        </div>#}
+{#    </div>#}
 {% endblock %}

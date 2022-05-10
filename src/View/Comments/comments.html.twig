@@ -1,6 +1,6 @@
 {% extends 'layout.html.twig' %}
 
-{% block title %} Commentaires - {{ parent () }}{% endblock %}
+{% block title %}Commentaires - {{ parent () }}{% endblock %}
 
 {% block content %}
     <h4 class="card-header bg-orange text-center my-3">Espace commentaires</h4>
@@ -12,7 +12,7 @@
     <article class = "d-flex bd-highlight justify-content-between align-items-center" style="background-color: white">
         <header class="card-header d-flex flex-column bd-highlight align-items-center p-3 border-bottom-0 " style="background-color: white">
                 <div class="width-auto">
-                    <img class="rounded-circle p-2 bd-highlight" src="/upload/{{ comment.picture }}" width="80" height="80" alt="">
+                    <img class="rounded-circle p-2 bd-highlight" src="/uploads/{{ comment.picture }}" width="80" height="80" alt="">
                 </div>
             <p class="fs-5"><a style="color: darkgrey; text-decoration:none" href="#">{{ comment.firstname }}</a></p>
         </header>
@@ -29,7 +29,7 @@
         <article class = "d-flex bd-highlight flex-row-reverse justify-content-between align-items-center" style="background-color: #eeeeee">
             <header class="card-header d-flex flex-column bd-highlight align-items-center p-3 border-bottom-0" style="background-color: #eeeeee">
                 <div class="width-auto">
-                    <img class="rounded-circle p-2 bd-highlight" src="/upload/{{ comment.picture }}" width="80" height="80" alt="">
+                    <img class="rounded-circle p-2 bd-highlight" src="/uploads/{{ comment.picture }}" width="80" height="80" alt="">
                 </div>
                 <p class="fs-5"><a style="color: darkgrey; text-decoration:none" href="#">{{ comment.firstname }}</a></p>
             </header>
@@ -45,8 +45,8 @@
 
     <div class="card-footer py-3 border-0 my-5" style="background-color: white">
         <div class="d-flex flex-start w-100">
-            <img class="rounded-circle shadow-1-strong me-3"
-                 src="/upload/{{ user.picture }}" alt="avatar" width="40"
+            <img class="rounded-circle shadow-1-strong me-3" style="width: 3rem; height: 3rem;"
+                 src="/uploads/{{ user.picture }}" alt="avatar" width="40"
                  height="40" />
             <form method="post" action="" class="form-outline w-100">
                 <label for="textAreaExample"></label>

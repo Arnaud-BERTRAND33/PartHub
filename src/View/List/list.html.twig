@@ -1,14 +1,13 @@
 {% extends 'layout.html.twig' %}
 
-{% block title %}{{ parent () }} - Liste des achats {% endblock %}
+{% block title %}Liste des achats - {{ parent () }}{% endblock %}
 
 
 {% block content %}
 
-
     <div class="card my-3">
         <h4 class="card-header bg-orange text-center">Liste des achats</h4>
-        <div class="card-body">
+        <main class="card-body">
             <div class="card">
                 <h5 class="card-header bg-light text-center">Alimentation</h5>
                 <div class="card-body">
@@ -75,5 +74,5 @@
             </div>
         </div>
     </div>
-
+        </main>
 {% endblock %}

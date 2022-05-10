@@ -1,5 +1,91 @@
 {% extends 'layout.html.twig' %}
 
+{% block title %}Participants - {{ parent () }}{% endblock %}
+
 {% block content %}
 
-{% endblock %}
+<div class="card my-3">
+    <h5 class="card-header bg-orange text-center">Liste des invités</h5>
+    <div class="card-body">
+        <div class="bg-light border rounded-3">
+            <div class="col-md-12">
+                <div class="content-panel">
+                    <table class="table table-striped table-advance table-hover">
+                        <thead>
+                        <tr>
+                            <th></th>
+                            <th class="hidden-phone"><i class="fa fa-question-circle"></i>Participants</th>
+                            <th><i class="fa fa-bookmark"></i>Téléphone</th>
+                            <th><i class="fa fa-bookmark"></i>E-mail</th>
+                            <th><i class=" fa fa-edit"></i> Statut</th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for guest in guests %}
+                            {% if loop.index0 is divisible by(2) %}
+                                <form action="" method="post">
+                                <tr>
+                                    <td>{{ guest.picture }}</td>
+                                    <td class="hidden-phone">{{ guest.firstname }} {{ guest.lastname }}</td>
+                                    <td>{{ guest.telephone }}</td>
+                                    <td><span class="label label-info label-mini">{{ guest.email }}</span></td>
+                                    <td>{{ guest.participate }}</td>
+                                    <td>
+                                            <select name="participate" class="dropdown-toggle" role="button" data-bs-toggle="dropdown" >
+                                                <option value="">Modifier</option>
+                                                <option class="bg-success text-white" value="participe">Participe</option>
+                                                <option class="bg-info text-black" value="peut-être">Peut-être</option>
+                                                <option class="bg-danger text-white" value="ne participe pas">Ne participe pas</option>
+                                            </select>
+
+                                        <input type="hidden" name="user_id" value="{{ guest.id }}">
+                                    </td>
+                                    <td>
+                                        <button class="btn btn-success btn-xs"><i class="bi bi-check-lg" type="submit" id="send" name="send"></i></button></td>
+                                    </td>
+                                </tr>
+                                </form>
+                            {% else %}
+                                <form action="" method="post">
+                                    <tr>
+                                        <td>{{ guest.picture }}</td>
+                                        <td class="hidden-phone">{{ guest.firstname }} {{ guest.lastname }}</td>
+                                        <td>{{ guest.telephone }}</td>
+                                        <td><span class="label label-info label-mini">{{ guest.email }}</span></td>
+                                        <td>{{ guest.participate }}</td>
+                                        <td>
+                                            <select  name="participate" class="dropdown-toggle" role="button" data-bs-toggle="dropdown" >
+                                                <option value="">Modifier</option>
+                                                <option class="bg-success text-white" value="participe">Participe</option>
+                                                <option class="bg-info text-black" value="peut-être">Peut-être</option>
+                                                <option class="bg-danger text-white" value="ne participe pas">Ne participe pas</option>
+                                            </select>
+                                            <input type="hidden" name="user_id" value="{{ guest.id }}">
+                                        </td>
+                                        <td>
+                                            <button class="btn btn-success btn-xs"><i class="bi bi-check-lg" type="submit" id="send" name="send"></i></button></td>
+                                        </td>
+                                    </tr>
+                                </form>
+                            {% endif %}
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+
+            <div>
+            <form class="d flex justify-content-center row g-3">
+                <div class="col-auto">
+                    <legend>Inviter un nouveau participant</legend>
+                </div>
+                <div class="col-auto">
+                    <label for="staticEmail" class="visually-hidden">Email</label>
+                    <input type="text" class="form-control" id="" placeholder="E-mail">
+                </div>
+                <div class="col-auto">
+                    <button class="btn btn-primary mb-3" type="submit" id="send" name="sendMail">Envoyer</button>
+                </div>
+            </form>
+            </div>
+            {% endblock %}

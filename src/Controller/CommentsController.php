@@ -18,7 +18,6 @@ class CommentsController extends AbstractController
             if (!isset($_POST['comment']) || $_POST['comment'] === '') {
                 $error['comment'] = 'Veuillez écrire un commentaire';
             }
-
             if (!$error) {
                 $comment = array_map('trim', $_POST);
 

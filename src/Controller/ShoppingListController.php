@@ -18,6 +18,7 @@ class ShoppingListController extends AbstractController
         }
     }
 
+
     public function shoppingList(int $partyId)
     {
         $shoppingManager = new FoodManager();
@@ -74,6 +75,7 @@ class ShoppingListController extends AbstractController
             //'error' => $error,
             'foods' => $foods,
             'alcools' => $alcools,
+            'party_id' => $partyId,
         ]);
     }
 }
