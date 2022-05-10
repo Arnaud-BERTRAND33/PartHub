@@ -6,48 +6,44 @@
 
 <div class="container d-flex justify-content-center">
     <div class="row">
-        <div class="col my-3">
-            <div class="row needs-validation was-validated">
-                <div class="col my-5">
-                    <div class="card">
-                            <div class="card-body bg-orange text-center rounded-top">
-                                <h2>Inscrivez-vous sur PartHub</h2>
-                            </div>
-                        <form action="" method="post">
-                            <div class="form-group my-5">
-                            <ul>
-                                <li class="list-group-item border-0"><label class="mb-1" for="lastname">Nom: </label>
-                                    <input class="form-control" type="text" name="lastname" id="lastname" required> </li>
-                                {% if error.lastname is defined %}
-                                    <p class="text-danger">{{ error.lastname }}</p>
-                                {% endif %}
-                                <li class="list-group-item border-0"><label class="mb-1" for="firstname">Prénom: </label>
-                                    <input class="form-control" type="text" name="firstname" id="firstname" required> </li>
-                                {% if error.firstname is defined %}
-                                    <p class="text-danger">{{ error.firstname }}</p>
-                                {% endif %}
-                                <li class="list-group-item border-0"><label class="mb-1" for="email">Email: </label>
-                                    <input class="form-control" type="email" name="email" id="email" required> </li>
-                                {% if error.email is defined %}
-                                    <p class="text-danger">{{ error.email }}</p>
-                                {% endif %}
-                                <li class="list-group-item border-0"><label class="mb-1" for="password">Mot de passe: </label>
-                                    <input class="form-control" type="password"name="password" id="password" required></li>
-                                {% if error.password is defined %}
-                                    <p class="text-danger">{{ error.password }}</p>
-                                {% endif %}
-                                <li class="list-group-item border-0"><label class="mb-1" for="confirmPassword">Mot de passe: </label>
-                                    <input class="form-control" type="password" name="confirmPassword" id="confirmPassword" required> </li>
-                                {% if error.confirPassword is defined %}
-                                    <p class="text-danger">{{ error.confirmPassword }}</p>
-                                {% endif %}
-                                <li class="list-group-item border-0 text-center">
-                                    <input class="btn btn-outline-success" type="submit" id="send" name="send"value="Enregistrer"></li>
-                            </ul>
-                            </div>
-                        </form>
+        <div class="col my-5">
+            <div class="card">
+                    <div class="card-body bg-orange text-center rounded-top">
+                        <h2>Inscrivez-vous sur PartHub</h2>
                     </div>
-                </div>
+                <form action="" method="post">
+                    <div class="form-group my-5">
+                    <ul>
+                        <li class="list-group-item border-0"><label class="mb-1" for="lastname">Nom: </label>
+                            <input class="form-control" type="text" name="lastname" id="lastname" required> </li>
+                        {% if error.lastname is defined %}
+                            <p class="text-danger">{{ error.lastname }}</p>
+                        {% endif %}
+                        <li class="list-group-item border-0"><label class="mb-1" for="firstname">Prénom: </label>
+                            <input class="form-control" type="text" name="firstname" id="firstname" required> </li>
+                        {% if error.firstname is defined %}
+                            <p class="text-danger">{{ error.firstname }}</p>
+                        {% endif %}
+                        <li class="list-group-item border-0"><label class="mb-1" for="email">Email: </label>
+                            <input class="form-control" type="email" name="email" id="email" required> </li>
+                        {% if error.email is defined %}
+                            <p class="text-danger">{{ error.email }}</p>
+                        {% endif %}
+                        <li class="list-group-item border-0"><label class="mb-1" for="password">Mot de passe: </label>
+                            <input class="form-control" type="password"name="password" id="password" required></li>
+                        {% if error.password is defined %}
+                            <p class="text-danger">{{ error.password }}</p>
+                        {% endif %}
+                        <li class="list-group-item border-0"><label class="mb-1" for="confirmPassword">Mot de passe: </label>
+                            <input class="form-control" type="password" name="confirmPassword" id="confirmPassword" required> </li>
+                        {% if error.confirPassword is defined %}
+                            <p class="text-danger">{{ error.confirmPassword }}</p>
+                        {% endif %}
+                        <li class="list-group-item border-0 text-center">
+                            <input class="btn btn-outline-success" type="submit" id="send" name="send"value="Enregistrer"></li>
+                    </ul>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
