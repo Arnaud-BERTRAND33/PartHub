@@ -35,14 +35,14 @@ class PartyManager extends AbstractManager
         $statement = $this->pdo->prepare("SELECT p.id, p.picture, p.title, p.theme,
        p.date, p.address, p.city, p.zip, p.description, p.playlist_url, p.creation_date,
        p.user_id
-FROM party p
-LEFT JOIN user_has_party h ON h.party_id = p.id
-WHERE h.user_id= :user_id
-union
-SELECT p.id, p.picture, p.title, p.theme,
+        FROM party p
+        LEFT JOIN user_has_party h ON h.party_id = p.id
+        WHERE h.user_id= :user_id
+        union
+        SELECT p.id, p.picture, p.title, p.theme,
        p.date, p.address, p.city, p.zip, p.description, p.playlist_url, p.creation_date,
        p.user_id
-FROM party p WHERE user_id= :user_id;");
+        FROM party p WHERE user_id= :user_id;");
 
         $statement->bindValue('user_id', $userId);
         $statement->execute();
