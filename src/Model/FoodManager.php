@@ -24,4 +24,10 @@ class FoodManager extends AbstractManager
         $foods = $this->selectAllByPartyId($partyId);
         return $foods;
     }
+
+    public function delete(int $foodId): void
+    {
+        $statement = $this->pdo->prepare("DELETE FROM food WHERE id = $foodId");
+        $statement->execute();
+    }
 }

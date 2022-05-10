@@ -24,4 +24,15 @@ class AlcoolManager extends AbstractManager
         $alcools = $this->selectAllByPartyId($partyId);
         return $alcools;
     }
+
+    public function update(array $alcool)
+    {
+        // TODO
+    }
+
+    public function deleteAlcool(int $alcoolId): void
+    {
+        $statement = $this->pdo->prepare("DELETE FROM alcool WHERE id = $alcoolId");
+        $statement->execute();
+    }
 }

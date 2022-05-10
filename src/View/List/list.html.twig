@@ -1,78 +1,89 @@
 {% extends 'layout.html.twig' %}
 
-{% block title %}Liste des achats - {{ parent () }}{% endblock %}
-
+{% block title %}{{ parent () }} - Liste des achats {% endblock %}
 
 {% block content %}
-
     <div class="card my-3">
         <h4 class="card-header bg-orange text-center">Liste des achats</h4>
-        <main class="card-body">
-            <div class="card">
-                <h5 class="card-header bg-light text-center">Alimentation</h5>
-                <div class="card-body">
-            <ul class="list-unstyled">
-                <form action="" method="post" id="food" name="food">
-                    <div class="form-group my-5">
-                        <ul>
-                            <li class="list-group-item border-0"><label class="mb-1" for="food">Aliment: </label><input class="form-control" type="text" name="food" id="food" required> </li>
-                            <li class="list-group-item border-0 text-center"><input class="btn btn-outline-success" type="submit" id="add" name="add" value="Ajouter"></li>
-                        </ul>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col">
+                    <div class="card">
+                        <h5 class="card-header bg-light text-center">Alimentation</h5>
+                        <div class="card-body">
+                            <ul class="list-unstyled">
+                                <form action="" method="post" id="food" name="food">
+                                    <div class="form-group my-5">
+                                        <ul>
+                                            <li class="list-group-item border-0"><label class="mb-1"
+                                                                                        for="food">Aliment: </label><input
+                                                    class="form-control" type="text" name="food" id="food" required></li>
+                                            <li class="list-group-item border-0 text-center"><input
+                                                    class="btn btn-outline-success" type="submit" id="add" name="add"
+                                                    value="Ajouter"></li>
+                                        </ul>
+                                    </div>
+                                </form>
+                            </ul>
 
- {% for food in foods %}
-            <ul class = "list-group">
-                <li class="list-group-item border-0">
-                    <div>
-                        {{ food.item }}
+                            {% for food in foods %}
+                                <ul class="list-group">
+                                    <li class="list-group-item border-0 d-flex align-items-center justify-content-between">
+                                        <div> {{ food.item }} </div>
+                                        <div class="">
+                                            <a class="btn btn-outline-success" role="button" href="#"><i class="bi bi-pencil"></i></a>
+                                            <a class="btn btn-outline-danger" role="button"
+                                               href="/party/shopping-list/food/delete?party_id={{ party_id }}&food_id={{ food.id }}"><i
+                                                    class="bi bi-trash3-fill"></i></a>
+                                        </div>
+                                    </li>
+                                </ul>
+                            {% endfor %}
+                        </div>
                     </div>
-                </li>
-            </ul>
- {% endfor %}
 
-        <div class="card my-3">
-                    <h5 class="card-header bg-light text-center">Boisson</h5>
-                    <div class="card-body">
-                        <ul class="list-unstyled">
-                            <form action="" method="post" id="alcool" name="alcool">
-                                <div class="form-group my-5">
-                                    <ul>
-                                        <li class="list-group-item border-0"><label class="mb-1" for="alcool">Boisson: </label><input class="form-control" type="text" name="alcool" id="alcool" required> </li>
-                                        <li class="list-group-item border-0 text-center"><input class="btn btn-outline-success" type="submit" id="add" name="add" value="Ajouter"></li>
-                                    </ul>
-                                </div>
-                            </form>
+
+                </div>
+                <div class="col">
+                    <div class="card">
+                        <h5 class="card-header bg-light text-center">Boisson</h5>
+                        <div class="card-body">
+                            <ul class="list-unstyled">
+                                <form action="" method="post" id="alcool" name="alcool">
+                                    <div class="form-group my-5">
+                                        <ul>
+                                            <li class="list-group-item border-0"><label class="mb-1"
+                                                                                        for="alcool">Boisson: </label><input
+                                                    class="form-control" type="text" name="alcool" id="alcool" required></li>
+                                            <li class="list-group-item border-0 text-center"><input class="btn btn-outline-success"
+                                                                                                    type="submit" id="add"
+                                                                                                    name="add" value="Ajouter"></li>
+                                        </ul>
+                                    </div>
+                                </form>
+                            </ul>
+
+                            {% for alcool in alcools %}
+                                <ul class="list-group">
+                                    <li class="list-group-item border-0 d-flex align-items-center justify-content-between">
+                                        <div> {{ alcool.item }} </div>
+                                        <div class="">
+                                            <a class="btn btn-outline-success" role="button" href="#"><i class="bi bi-pencil"></i></a>
+                                            <a class="btn btn-outline-danger" role="button"
+                                               href="/party/shopping-list/alcool/delete?party_id={{ party_id }}&alcool_id={{ alcool.id }}"><i
+                                                    class="bi bi-trash3-fill"></i></a>
+                                        </div>
+                                    </li>
+                                </ul>
+                            {% endfor %}
+                        </div>
                     </div>
                 </div>
             </div>
-
-            {% for alcool in alcools %}
-                <ul class = "list-group">
-                    <li class="list-group-item border-0">
-                        <div>
-                            {{ alcool.item }}
-                        </div>
-                    </li>
-                </ul>
-            {% endfor %}
-
-            <div class="card">
-                <h5 class="card-header bg-light text-center">Divers</h5>
-                <div class="card-body">
-            <ul class="list-unstyled">
-                <li>This is a list.</li>
-                <li>It appears completely unstyled.</li>
-                <li>Structurally, it's still a list.</li>
-                <li>However, this style only applies to immediate child elements.</li>
-            </ul>
-            <div class="d-flex justify-content-end mx-auto">
-                <a href="#" class="btn btn-outline-success" type="submit">Ajouter</a>
-            </div>
         </div>
     </div>
-        </main>
+
+
+
+
 {% endblock %}

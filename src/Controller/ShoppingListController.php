@@ -78,4 +78,22 @@ class ShoppingListController extends AbstractController
             'party_id' => $partyId,
         ]);
     }
+
+    public function deleteFood(int $foodId): void
+    {
+        $foodManager = new FoodManager();
+        $foodManager->delete($foodId);
+
+
+
+        header('Location: /party/shopping-list?party_id=' . $_GET['party_id']);
+    }
+
+    public function deleteAlcool(int $alcoolId): void
+    {
+        $alcoolManager = new AlcoolManager();
+        $alcoolManager->delete($alcoolId);
+
+        header('Location: /party/shopping-list?party_id=' . $_GET['party_id']);
+    }
 }
