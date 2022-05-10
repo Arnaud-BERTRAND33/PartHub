@@ -24,7 +24,7 @@
                     <img src="/assets/images/spotify.png" class="img-fluid text-center" alt="Responsive image" width="10%"> <a>{{ party.playlist_url }}</a>
                     {% if party.user_id == user.id  %}
                         <div class="d-flex justify-content-end">
-                            <a class="btn btn-outline-success" role="button" href="/party/dashboard?party_id={{ party.id }}">Modifier soirée</a>
+                            <a class="btn btn-outline-success" role="button" href="/party/update?party_id={{ party.id }}">Modifier soirée</a>
                         </div>
                     {% endif %}
                 </div>

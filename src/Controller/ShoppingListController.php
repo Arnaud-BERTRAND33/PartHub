@@ -74,6 +74,78 @@ class ShoppingListController extends AbstractController
             //'error' => $error,
             'foods' => $foods,
             'alcools' => $alcools,
+            'party_id' => $partyId,
         ]);
+    }
+
+    public function update(int $partyId)
+    {
+        $shoppingManager = new FoodManager();
+        $foods = $shoppingManager->getFoods($partyId);
+
+        $shoppingManager = new AlcoolManager();
+        $alcools = $shoppingManager->getAlcools($partyId);
+
+        $error = array();
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            if (isset($_POST['food'])) {
+                if (!isset($_POST['food']) || $_POST['food'] === '') {
+                    $error['food'] = 'Veuillez renseigner un aliment';
+                }
+
+                if (!$error) {
+                    $food = array_map('trim', $_POST);
+
+                    $food['party_id'] = $_GET['party_id'];
+                    $food['user_id'] = $this->user['id'];
+                    $food['item'] = $_POST['food'];
+
+                    $shoppingManager = new FoodManager();
+                    $shoppingManager->insertFood($food);
+                    header('Location: /party/shopping-list?party_id=' . $partyId);
+                    return '';
+                }
+            }
+            if (isset($_POST['alcool'])) {
+            }
+
+            if (isset($_POST['alcool'])) {
+                if (!isset($_POST['alcool']) || $_POST['alcool'] === '') {
+                    $error['food'] = 'Veuillez renseigner un alcool';
+                }
+
+                if (!$error) {
+                    $alcool = array_map('trim', $_POST);
+
+                    $alcool['party_id'] = $_GET['party_id'];
+                    $alcool['user_id'] = $this->user['id'];
+                    $alcool['item'] = $_POST['alcool'];
+
+                    $shoppingManager = new AlcoolManager();
+                    $shoppingManager->update($alcool);
+                    header('Location: /party/shopping-list?party_id=' . $partyId);
+                    return '';
+                }
+            }
+        }
+    }
+
+    public function deleteFood(int $foodId): void
+    {
+        $foodManager = new FoodManager();
+        $foodManager->delete($foodId);
+
+
+
+        header('Location: /party/shopping-list?party_id=' . $_GET['party_id']);
+    }
+
+    public function deleteAlcool(int $alcoolId): void
+    {
+        $alcoolManager = new AlcoolManager();
+        $alcoolManager->delete($alcoolId);
+
+        header('Location: /party/shopping-list?party_id=' . $_GET['party_id']);
     }
 }

@@ -24,4 +24,25 @@ class FoodManager extends AbstractManager
         $foods = $this->selectAllByPartyId($partyId);
         return $foods;
     }
+    public function update(array $party, int $partyId): int | bool
+    {
+        $statement = $this->pdo->prepare("UPDATE " . self::TABLE . " SET
+        `item` = :item,
+        `party_id` = :party_id,
+        `user_id` = :user_id,
+        WHERE id = $partyId");
+
+        $statement->bindValue('item', $party['item']);
+        $statement->bindValue('party_id', $party['party_id']);
+        $statement->bindValue('user_id', $party['user_id']);
+        ;
+
+        return $statement->execute();
+    }
+
+    public function delete(int $foodId): void
+    {
+        $statement = $this->pdo->prepare("DELETE FROM food WHERE id = $foodId");
+        $statement->execute();
+    }
 }
