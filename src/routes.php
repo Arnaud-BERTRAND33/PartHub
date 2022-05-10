@@ -22,7 +22,6 @@ return [
     'party/shopping-list' => ['ShoppingListController', 'shoppingList', ['party_id']],
     'party/shopping-list/food/delete' => ['ShoppingListController', 'deleteFood', ['food_id']],
     'party/shopping-list/alcool/delete' => ['ShoppingListController', 'deleteAlcool', ['alcool_id']],
-    'party/shopping-list/update' => ['ShoppingListController', 'update', ['party_id']],
     'party/guests' => ['GuestsController', 'guests', ['party_id']],
     'party/budget' => ['BudgetController', 'budget', ['party_id']],
     'party/comments' => ['CommentsController', 'comments', ['party_id']],
