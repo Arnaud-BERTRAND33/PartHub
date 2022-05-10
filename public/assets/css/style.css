@@ -34,15 +34,14 @@ body {
 }
 
 .uk-countdown-number {
-    font-size: 3rem;
+    font-size: 2.5rem;
     font-weight: bold
 }
 
 .uk-countdown-separator {
-    font-size: 3rem;
+    font-size: 2rem;
 }
 
 #sidebarMenu {
     z-index: 10;
 }
-

@@ -45,10 +45,11 @@ class PartyController extends AbstractController
                 if ($_FILES['picture']['error'] === UPLOAD_ERR_NO_FILE) {
                     $party['picture'] = 'default.jpg';
                 } else {
+                    $tmpName = $_FILES['picture']['tmp_name'];
                     $uniqueName = uniqid('', true);
                     $file = $uniqueName . "." . $extension;
                     $party['picture'] = $file;
-                    move_uploaded_file($file, '../uploads/');
+                    move_uploaded_file($tmpName, '../public/uploads/' . $file);
                 }
 
                 $date = new DateTime();
@@ -56,8 +57,8 @@ class PartyController extends AbstractController
                 $party['date'] = $_POST['date'] . " " . $_POST['time'];
                 $party['user_id'] = $this->user['id'];
                 $party['creation_date'] = $dateCreation;
-                $partyadd = new PartyManager();
-                $partyId = $partyadd->insert($party);
+                $partyAdd = new PartyManager();
+                $partyId = $partyAdd->insert($party);
                 header('Location:/party/dashboard?party_id=' . $partyId);
                 return '';
             }
@@ -117,10 +118,11 @@ class PartyController extends AbstractController
                 if ($_FILES['picture']['error'] === UPLOAD_ERR_NO_FILE) {
                     $party['picture'] = 'default.jpg';
                 } else {
+                    $tmpName = $_FILES['picture']['tmp_name'];
                     $uniqueName = uniqid('', true);
                     $file = $uniqueName . "." . $extension;
                     $party['picture'] = $file;
-                    move_uploaded_file($file, '../uploads/');
+                    move_uploaded_file($tmpName, '../public/uploads/' . $file);
                 }
 
                 $date = new DateTime();
@@ -140,6 +142,7 @@ class PartyController extends AbstractController
         return $this->twig->render('PartyUpdate/partyUpdate.html.twig', [
             'errors' => $errors,
             'party' => $party,
+            'party_id' => $partyId,
         ]);
     }
 

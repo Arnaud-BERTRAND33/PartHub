@@ -1,12 +1,14 @@
 {% extends 'layout.html.twig' %}
 
-{% block title %}PartHub - View Party{% endblock %}
+{% block title %}{{ party.name }} - {{ parent () }}{% endblock %}
 
 {% block content %}
         <div class="card mt-4 col-lg-12">
             <h5 class="bg-orange text-center rounded">Informations soirée</h5>
             <div class="card mb-3">
-                <img src="/uploads/{{ party.picture }}" class="bg-image" style="background-size: cover; height: 15em">
+                <div class="uk-height-small uk-flex uk-flex-center uk-flex-middle uk-background-cover uk-light uk-margin-small"
+                     data-src="/uploads/{{ party.picture }}" uk-img style = "width:100%; height: 15rem">
+                </div>
                 <div class="card-body">
                     <h5 class="card-title">{{ party.title }}</h5>
                     <h6>Thème : {{ party.theme }}</h6>

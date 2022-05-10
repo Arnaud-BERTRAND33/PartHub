@@ -6,6 +6,7 @@ use App\Error\LoginRequiredException;
 use App\Model\AlcoolManager;
 use App\Model\CommentsManager;
 use App\Model\FoodManager;
+use App\Model\GuestsManager;
 use App\Model\PartyManager;
 use App\Model\UserManager;
 
@@ -25,8 +26,8 @@ class PartyDashboardController extends AbstractController
         $partyManager = new PartyManager();
         $party = $partyManager->selectOneById($partyId);
 
-        $userManager = new UserManager();
-        $totalUsers = count($userManager->selectAll());
+        $guestManager = new GuestsManager();
+        $totalUsers = count($guestManager->participateGuests($partyId));
 
         $commentManager = new CommentsManager();
         $comments = $commentManager->selectByPartyId($partyId);

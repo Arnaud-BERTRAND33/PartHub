@@ -27,6 +27,7 @@ class ConnexionController extends AbstractController
         return $this->twig->render('Connexion/connexion.html.twig');
     }
 
+
     public function inscription(): string
     {
 
