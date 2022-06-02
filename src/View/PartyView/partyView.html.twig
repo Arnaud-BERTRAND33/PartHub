@@ -1,10 +1,10 @@
 {% extends 'layout.html.twig' %}
 
-{% block title %}{{ party.name }} - {{ parent () }}{% endblock %}
+{% block title %}{{ party.title }} - {{ parent () }}{% endblock %}
 
 {% block content %}
         <div class="card mt-4 col-lg-12">
-            <h5 class="bg-orange text-center rounded">Informations soirée</h5>
+            <h5 class="bg-orange text-center rounded py-2">Informations soirée</h5>
             <div class="card mb-3">
                 <div class="uk-height-small uk-flex uk-flex-center uk-flex-middle uk-background-cover uk-light uk-margin-small"
                      data-src="/uploads/{{ party.picture }}" uk-img style = "width:100%; height: 15rem">
@@ -21,9 +21,9 @@
         </div>
 
         <div class="card mt-4 col-lg-12">
-            <h5 class="bg-orange text-center rounded">Playlist</h5>
+            <h5 class="bg-orange text-center rounded py-2">Playlist</h5>
             <div class="card-body">
-                    <img src="/assets/images/spotify.png" class="img-fluid text-center" alt="Responsive image" width="10%"> <a>{{ party.playlist_url }}</a>
+                    <img src="/assets/images/spotify.png" class="img-fluid text-center" alt="Responsive image" width="10%"> <a href="{{ party.playlist_url }}" class="mx-4">{{ party.playlist_url }}</a>
                     {% if party.user_id == user.id  %}
                         <div class="d-flex justify-content-end">
                             <a class="btn btn-outline-success" role="button" href="/party/update?party_id={{ party.id }}">Modifier soirée</a>
